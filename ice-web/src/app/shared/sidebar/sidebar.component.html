@@ -1,0 +1,289 @@
+<nav class="sidebar-nav">
+    <ul id="sidebarnav">
+		<li class="nav-devider"></li>
+        <!-- First level menu -->
+        <!-- <li class="sidebar-item" [class.active]="showMenu === sidebarnavItem.title" *ngFor="let sidebarnavItem of sidebarnavItems"
+            [routerLinkActive]="sidebarnavItem.submenu.length != 0 ? '' : 'active'">
+            <div class="nav-small-cap" *ngIf="sidebarnavItem.extralink === true">{{sidebarnavItem.title}}</div>
+            <a class="sidebar-link waves-effect waves-dark" [routerLink]="sidebarnavItem.class === '' ? [sidebarnavItem.path] : null"
+                [ngClass]="[sidebarnavItem.class]" *ngIf="!sidebarnavItem.extralink;" (click)="addExpandClass(sidebarnavItem.title)"
+                [routerLinkActive]="sidebarnavItem.submenu.length != 0 ? '' : 'active'">
+                <i [ngClass]="[sidebarnavItem.icon]"></i>
+                <span class="hide-menu">{{sidebarnavItem.title}}</span>
+            </a>
+        </li> -->
+        <!-- <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/login">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">Login</span>
+            </a>
+        </li> -->
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.PRODUCTS)">
+            <a class="sidebar-link waves-effect waves-dark d-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <div class="d-flex align-center justify-content-between w-100">
+                    <span class="hide-menu">{{LANG.Products}}</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </a>
+            <ul class="collapse sub-menu" id="collapseExample">
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/product-list">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Produc_List}}</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/list-product-attribute">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Product_Attributes}}</span>
+                    </a>
+                </li>
+
+                <!-- <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/list-loan">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Loan_Management}}</span>
+                    </a>
+                </li> -->
+
+                
+            </ul>
+        </li>
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.KYC)">
+            <a class="sidebar-link waves-effect waves-dark d-block" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <div class="d-flex align-center justify-content-between w-100">
+                    <span class="hide-menu">{{LANG.KYC}}</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </a>
+            <ul class="collapse sub-menu" id="collapseExample1">
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/list-kyc">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.KYC_List}}</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/user-role">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.User_roles}}</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/info-type">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Info_Type}}</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.USER_MANAGEMENT)">
+            <a class="sidebar-link waves-effect waves-dark d-block" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
+                <div class="d-flex align-center justify-content-between w-100">
+                    <span class="hide-menu">{{LANG.Users_Management}}</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </a>
+            <ul class="collapse sub-menu" id="collapseExample4">
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/users-list">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Admin_List}}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/admin-ip-list">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Admin_IP_List}}</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/admin-ip-logs">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Admin_IP_Log}}</span>
+                    </a>
+                </li>
+
+                
+            </ul>
+        </li>
+
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.CMS)">
+            <a class="sidebar-link waves-effect waves-dark d-block" data-toggle="collapse" href="#collapseExample44" role="button" aria-expanded="false" aria-controls="collapseExample44">
+                <div class="d-flex align-center justify-content-between w-100">
+                    <span class="hide-menu">CMS</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </a>
+            <ul class="collapse sub-menu" id="collapseExample44">
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark d-block" data-toggle="collapse" href="#collapseExample444" role="button" aria-expanded="false" aria-controls="collapseExample444">
+                        <div class="d-flex align-center justify-content-between w-100">
+                            <span class="hide-menu">Home</span>
+                            <i class="fas fa-angle-right"></i>
+                        </div>
+                    </a>
+                    <ul class="collapse sub-menu" id="collapseExample444">
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('0')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 0</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('1')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 1</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('2')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 2</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('3')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 3</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('4')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 4</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('5')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 5</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('6')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 6</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('7')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 7</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('8')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 8</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="goToSections('9')">
+                            <a class="sidebar-link waves-effect waves-dark">
+                                <span class="hide-menu">Section 9</span>
+                            </a>
+                        </li>
+        
+        
+                        
+                    </ul>
+                </li>
+
+
+                
+            </ul>
+        </li>
+
+        <!-- <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark d-block" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <div class="d-flex align-center justify-content-between w-100">
+                    <span class="hide-menu">Campaign Evaluation</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </a>
+            <ul class="collapse sub-menu" id="collapseExample2">
+               
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/campaign-list">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">Campaign List</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/component3">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">Component3</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/component4">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">Component4</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </li> -->
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.OPPORTUNITY)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/campaign-list">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">{{LANG.Opportunity_List}}</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.INVESTORS)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/inverstors-kyc">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">{{LANG.Investors}}</span>
+            </a>
+        </li>
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.BORROWERS)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/borrowers-kyc">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">{{LANG.Borrowers}}</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.EVALUATION)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/evaluation-list">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">{{LANG.Evaluation_List}}</span>
+            </a>
+        </li>
+
+     
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.NOTIFICATIONS)">
+            <a class="sidebar-link waves-effect waves-dark d-block" data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample4">
+                <div class="d-flex align-center justify-content-between w-100">
+                    <span class="hide-menu">{{LANG.Notifications}}</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </a>
+            <ul class="collapse sub-menu" id="collapseExample6">
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/email-templates-list">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.Email_Notifications}}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/sms-templates-list">
+                    <a class="sidebar-link waves-effect waves-dark">
+                        <span class="hide-menu">{{LANG.SMS_Notifications}}</span>
+                    </a>
+                </li>
+
+                
+            </ul>
+        </li>
+
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.PAGES)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/pages">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">{{LANG.Pages}}</span>
+            </a>
+        </li>
+
+        <li *ngIf="checkRoute(navigation_options.OPPORTUNITY_SETUP)"class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/opportunity-setup">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">{{LANG.Opportunity_setup}}</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item" (click)="logout()">
+            <a class="sidebar-link waves-effect waves-dark">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> <span class="hide-menu">{{LANG.Logout}}</span>
+            </a>
+        </li>
+
+
+
+        
+
+       
+       
+        
+    </ul>
+</nav>

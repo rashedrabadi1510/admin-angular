@@ -1,0 +1,122 @@
+<div class="business tab-background tab-pad col-md-12 mt-3">
+    <!-- <ng-container *ngFor="let result of details"> -->
+
+        <h2>{{LANG.Registration_Details}}</h2>
+        <div class="weight pb-0">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>{{LANG.Name}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="details.name" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{LANG.Mobile_Number}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="details.display_mobile_number" disabled>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label>Registrattion Type</label>
+                        <input type="text" *ngIf="details.type==1" class="form-control"  disabled value="Individual">
+                        <input type="text" *ngIf="details.type==2" class="form-control"  disabled value="Coorporate">
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{LANG.Email}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="details.email" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{LANG.Account_Number}}</label>
+                        <input type="text" class="form-control" [(ngModel)]="details.account_number" disabled>
+                    </div>
+                </div>
+        </div>
+
+
+        <ng-container *ngFor="let data of details?.detail">                
+            <h2>{{data.title}}</h2>
+            <div class="weight pb-0">
+                <ng-container *ngFor="let item of data.info_type;let j=index;">
+                    <p *ngIf="item.detail?.length != ''">{{item.title}}</p>
+                    <div class="row">
+                        <ng-container *ngFor="let fields of item.detail;let k=index;">
+                            <div class="form-group col-md-6">
+                                <label>{{fields.title}}</label>
+                                <input *ngIf="fields.type == field_types.Email || fields.type == field_types.Mobile || fields.type == field_types.Characters || fields.type == field_types.Number" type="text" class="form-control" placeholder="{{fields.title}}"  name="field{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled>
+                                <input *ngIf="fields.type == field_types.Date" type="date" class="form-control" placeholder="{{fields.title}}"  name="field{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled>
+                                <textarea *ngIf="fields.type == field_types.Textarea" class="form-control" placeholder="{{LANG.Tell_about_your}} {{fields.title}}" name="textarea{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled></textarea>
+                                <div class="row campaign-row" *ngIf="fields.type == field_types.Yes_No">
+                                    <div class="form-check">
+                                        <div class="radio-1">
+                                            <input type="radio" class="radio-buttons" id="yes{{i}}{{j}}{{k}}" name="field{{i}}{{j}}{{k}}" value="{{fields.value}}" [checked]="fields.value == '1'">
+                                            <label name="gender" for="yes{{i}}{{j}}{{k}}">{{LANG.Yes}}</label>
+                                        </div>
+                                        <div class="radio-2">
+                                            <input type="radio" class="radio-buttons" id="no{{i}}{{j}}{{k}}" name="field{{i}}{{j}}{{k}}" value="{{fields.value}}" [checked]="fields.value == '0'">
+                                            <label name="gender" for="no{{i}}{{j}}{{k}}">{{LANG.No}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-container *ngIf="fields.type == field_types.Fileupload">
+                                    <div class="add-image">
+                                        <span *ngIf="fields.value && pdfUrl$ ==false">
+                                            <!-- <iframe [src]="pdfUrl$" type="application/pdf" width="100%" height="600"></iframe> -->
+                                          <a href="{{fields.value}}">  <img src="{{fields.value}}" alt=""></a>
+                                            <!-- <button class="btn" (click)="downloadPdf()">View</button> -->
+                                        </span>
+                                        <span *ngIf="fields.value && pdfUrl$==true">
+                                            <!-- <iframe [src]="pdfUrl$" type="application/pdf" width="100%" height="600"></iframe> -->
+                                          <a href="{{fields.value}}">  <img src="../../../../../assets/images/pdfimg.png" alt=""></a>
+                                            <!-- <button class="btn" (click)="downloadPdf()">View</button> -->
+                                        </span>
+                                        
+                                    </div>                
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                        
+                    </div>
+                </ng-container>
+
+            </div>
+        </ng-container>
+    <!-- </ng-container> -->
+    <div class="col-md-12 " *ngIf="details.detail?.length > 0">
+        <div class="row">
+            <div class="button-wrapper col-md-4 mt-0">
+                <button *ngIf="!load" class="btn success" (click)="approveRejectKYC('1')">{{LANG.Approve}}</button>
+                <button *ngIf="load" class="btn success loader-btn"><loader></loader></button>
+            </div>
+            <div class="button-wrapper col-md-4 mt-0"><button class="btn cancel" data-toggle="modal" data-target="#reject" [disabled]="load">{{LANG.Reject}}</button></div>
+            <div class="button-wrapper col-md-4 mt-0">
+                <button *ngIf="!pending_load" class="btn pending" (click)="approveRejectKYC('0')">{{LANG.Pending}}</button>
+                <button *ngIf="pending_load" class="btn pending loader-btn"><loader></loader></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reject">{{LANG.Reject_KYC}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>{{LANG.Reason_for_rejection}}</label>
+                        <textarea type="text" class="form-control" placeholder="{{LANG.Reason}}"  name="reason" [(ngModel)]="reason"></textarea>
+                    </div>                
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary loader-btn" data-dismiss="modal" [disabled]="load">{{LANG.Close}}</button>
+          <button type="button" class="btn btn-primary loader-btn w-50" *ngIf="!load" (click)="approveRejectKYC('2')">{{LANG.Save_changes}}</button>
+          <button type="button" *ngIf="load" class="btn btn-primary loader-btn w-50"><loader></loader></button>
+          
+
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.login-register {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    padding: 10% 0;
+    position: fixed;
+}
+
+.login-box {
+    width: 400px;
+    margin: 0 auto;
+}
+
+#recoverform {
+    display: none;
+}
+
+.icon-back{
+    left: 0;
+    top: 0;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.icon-back i{
+    font-size: 20px;
+}
+

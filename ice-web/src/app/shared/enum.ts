@@ -1,0 +1,13 @@
+export enum Navigations {
+    PRODUCTS=1,
+    KYC=2,
+    USER_MANAGEMENT=3,
+    CMS=4,
+    OPPORTUNITY=5,
+    INVESTORS=6,
+    BORROWERS=7,
+    EVALUATION=8,
+    NOTIFICATIONS=9,
+    PAGES=10,
+    OPPORTUNITY_SETUP=11,
+}
