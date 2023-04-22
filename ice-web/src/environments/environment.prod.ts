@@ -1,14 +1,22 @@
 export const environment = {
   production: true,
   firebaseConfig : {
-    apiKey: "AIzaSyC_vC_cpFkc0ZiCdey9tEx2TMW0bNQzPjM",
-    authDomain: "royal-stallion.firebaseapp.com",
-    databaseURL: "https://royal-stallion.firebaseio.com",
-    projectId: "royal-stallion",
-    storageBucket: "royal-stallion.appspot.com",
-    messagingSenderId: "296126986485",
-    appId: "1:296126986485:web:ea750bc8e8576b16062dbc",
-    measurementId: "G-EDH0E6EHS1"
+    apiKey: "AIzaSyB7l5QmXf9pxwW2RZxLHQ2VtLJtL2K8OCY",
+    authDomain: "aaaa-6d056.firebaseapp.com",
+    databaseURL: "https://aaaa-6d056-default-rtdb.firebaseio.com",
+    projectId: "aaaa-6d056",
+    storageBucket: "aaaa-6d056.appspot.com",
+    messagingSenderId: "1021417514491",
+    appId: "1:1021417514491:web:22abc3ab52fbafe486d75e",
+    measurementId: "G-GEMW853ESY"
+    // apiKey: "AIzaSyC_vC_cpFkc0ZiCdey9tEx2TMW0bNQzPjM",
+    // authDomain: "royal-stallion.firebaseapp.com",
+    // databaseURL: "https://royal-stallion.firebaseio.com",
+    // projectId: "royal-stallion",
+    // storageBucket: "royal-stallion.appspot.com",
+    // messagingSenderId: "296126986485",
+    // appId: "1:296126986485:web:ea750bc8e8576b16062dbc",
+    // measurementId: "G-EDH0E6EHS1"
   },
   english_translations:{
     copyright:"2022 © Competitiveness Financial",

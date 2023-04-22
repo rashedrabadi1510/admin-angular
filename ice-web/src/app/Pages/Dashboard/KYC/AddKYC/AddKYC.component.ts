@@ -51,7 +51,14 @@ export class AddKycComponent implements OnInit {
         {id:6,title:"Number"},
         {id:7,title:"Date"},
         {id:8,title:"Yes/No"},
-        {id:9,title:"Commercial Number"}
+        {id:9,title:"Commercial Number"},
+        {id:10,title:"Identity"},
+        {id:11,title:"Gender"},
+        {id:12,title:"Banks"},
+        {id:13,title:"FundUse"},
+        {id:14,title:"MaritalStatus"},
+        {id:15,title:"Education"},
+        {id:16,title:"JobStatus"}
     ]
     this.route.queryParams
         .subscribe(
