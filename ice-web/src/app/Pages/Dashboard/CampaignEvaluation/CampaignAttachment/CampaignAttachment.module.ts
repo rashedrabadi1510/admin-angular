@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule} from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoaderModule } from 'src/app/shared/loader/Loader.module';
-import { PagesComponent } from './pages.component';
-
-
+import { CampaignAttachment } from './CampaignAttachment';
 
 
 
@@ -13,22 +12,21 @@ import { PagesComponent } from './pages.component';
  
 const ChildRoutes: Routes = [
     {
-        path: 'pages',
-        component:PagesComponent
+        path: 'campaign-attachment',
+        component:CampaignAttachment
       },
-  ]
+  ] 
 
 @NgModule({
   imports: [
     RouterModule.forChild(ChildRoutes),
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     LoaderModule
-  ],
+  ], 
   declarations:[
-    PagesComponent,
-   
-    
+    CampaignAttachment
   ]
 })
-export class PagesModule { }
+export class CampaignAttachmentModule { }

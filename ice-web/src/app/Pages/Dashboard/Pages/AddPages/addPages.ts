@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import {Location} from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 import { KYCService } from 'src/app/shared/Services/kyc.service';
 import { environment } from 'src/environments/environment';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare const $:any;
 @Component({
@@ -13,13 +16,16 @@ declare const $:any;
 export class AddPagesComponent implements OnInit {
  
 id:string="";
+progress:number=0;
 title:string="";
 ar_title:string="";
 description:string="";
 ar_description:string="";
 status:string="1";
 position:string="1";
-type:string=""
+type:string="";
+image:any;
+image_file:any={};
 infoTypeList=[];
 fieldType=[];
 positions:Array<number>=[]
@@ -36,7 +42,7 @@ types:string
 selectTupe:any
 descriptionForm:FormGroup
 
-constructor(private kycService:KYCService,private toastr:ToastrManager,private route:ActivatedRoute,private location: Location,private formBuilder: FormBuilder) {
+constructor(private sanitization:DomSanitizer,private kycService:KYCService,private toastr:ToastrManager,private route:ActivatedRoute,private location: Location,private formBuilder: FormBuilder) {
     this.descriptionForm = this.formBuilder.group({
         'title':['',Validators.required],
         'ar_title':['',Validators.required],
@@ -105,7 +111,49 @@ resetError(){
         ar_description:false,
     }
 }
-
+changeImage(event:any,type?:number) {
+   
+    let file = event.target.files[0];
+    let ext=file.type.split('/').pop().toLowerCase();
+    
+    if(this.type != "0"){
+      if(ext !== "jpeg" && ext !== "jpg" && ext !== "png" && file.name.split(".").pop().toLowerCase() !== "svg"){
+          this.toastr.warningToastr("",file.name + "is not a valid file") 
+          return false
+      }
+    }
+    if (file) {
+        this.image_file=file;
+       
+        this.uploadImage(this.image_file);
+    }
+    return
+  }
+  uploadImage(data:any,type?:number) {
+    var n = Date.now();
+    var fileName = this.image_file.name;
+    var path = fileName + n
+    const filePath = `Kyc/${path}`;
+    this.load=true;
+    const uploadTask =
+    firebase.storage().ref().child(`${filePath}`).put(this.image_file);
+    uploadTask.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        snapshot => {
+        const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            this.progress = progress
+        },
+        error => console.log(error),
+        async () => {
+        await uploadTask.snapshot.ref.getDownloadURL().then(res => {
+            this.image=res; 
+            this.load=false;
+          
+           
+        });
+        }
+    );
+  }
 addProductAttribute(){
     this.resetError();
     this.errorHandler();
@@ -125,7 +173,8 @@ addProductAttribute(){
         "status": this.status,
         "position": this.position,
         "kyc_detail":this.ar_description,
-        "type":this.selectTupe
+        "type":this.selectTupe,
+        "image":this.image,
     }
     this.load=true;
     if(this.id){
@@ -147,7 +196,8 @@ getKYCDetails(){
             this.ar_description=res.response.ar_description;
             this.status=res.response.status;
             this.position=res.response.position;
-            this.type = res.response.title
+            this.type = res.response.title;
+            this.image = res.response.image;
             $('#editor').summernote('code', this.description);
             $('#editor1').summernote('code', this.ar_description);
             
@@ -161,7 +211,7 @@ add(data){
         if(res.status){
             this.toastr.successToastr(this.LANG.KYC_added_successfully);
             this.location.back();
-            return
+        return
         }
         this.toastr.warningToastr(res.message);
 

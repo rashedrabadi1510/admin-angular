@@ -46,7 +46,20 @@ export class apiServiceComponent{
 		.pipe(map((response : Object) => response),
 		catchError(this._errorHandler));
 	}
+	filepost(url:string, data1:any){
+		let headers = this.getHeaders(url);
+		let _url = this.url + url;
+		let data = data1;
+		
 
+		return this.http.post(_url, data1)
+		.pipe(map((response : Object) => response),
+		catchError(this._errorHandler));
+		
+
+
+
+	}
 	_errorHandler(error:  Response){
 		return throwError(error || "Server Error");
 	}

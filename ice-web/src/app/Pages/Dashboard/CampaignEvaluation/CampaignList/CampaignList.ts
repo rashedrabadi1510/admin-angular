@@ -54,7 +54,11 @@ export class CampaignList implements OnInit {
   edit(data){
     this.router.navigate(["/dashboard/campaign-details"],{queryParams:{id:btoa(btoa(data.id))}})
   }
+  attachment(data){
+    alert(data.tagline);
+    this.router.navigate(["/dashboard/campaign-attachment"],{queryParams:{id:btoa(btoa(data.id)),title:data.tagline}})
 
+  }
   showDeleteModal(data){
     $("#delete").modal("show");
     this.delete_data=data;
