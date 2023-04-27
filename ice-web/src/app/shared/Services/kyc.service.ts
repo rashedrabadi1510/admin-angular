@@ -162,7 +162,11 @@ export class KYCService{
         let query="";
 		return this.api.get(this.url, query);
     }
-
+    getPagesParameters(){
+        this.url = "getPagesParameters";
+        let query="";
+		return this.api.get(this.url, query);
+    }
     getPagesDetails(id){
         this.url = `get_page_by_id/${id}`;
 		return this.api.get(this.url, "");
@@ -172,9 +176,30 @@ export class KYCService{
         this.url = "insert_page";
 		return this.api.post(this.url, data);
     }
-
+    getCampaignAttachment(data){
+        this.url = "getcampaignattachment";
+		return this.api.post(this.url, data);
+    }
+    
+    deleteCampaignattachment(data){
+        this.url = "deleteCampaignattachment";
+		return this.api.post(this.url, data);
+    }
+    addCampaignAttachment(data){
+       
+        this.url = "addcampaignattachment";
+		return this.api.filepost(this.url, data);
+    }
     updatePages(data){
         this.url = "update_page";
+		return this.api.post(this.url, data);
+    }
+    addPagesParameters(data){
+        this.url = "add_PagesParameters";
+		return this.api.post(this.url, data);
+    }
+    deleteparams(data){
+        this.url = "deleteparams";
 		return this.api.post(this.url, data);
     }
 

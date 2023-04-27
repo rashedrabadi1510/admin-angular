@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {  ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { KYCService } from 'src/app/shared/Services/kyc.service';
 import { environment } from 'src/environments/environment';
@@ -37,10 +37,8 @@ export class PagesComponent implements OnInit {
           this.dataTable=$('#example23').DataTable({
             dom: 'Bfrtip',
             "ordering": false,
-            responsive: true,
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
+            responsive: true
+           
         });
         $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
         }, 100);

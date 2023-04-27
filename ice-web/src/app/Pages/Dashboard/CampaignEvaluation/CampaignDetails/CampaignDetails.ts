@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { KYCService } from 'src/app/shared/Services/kyc.service';
-import { FieldType } from 'src/app/Shared/enums';
+import { FieldType } from 'src/app/shared/enums';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { ProductService } from 'src/app/shared/Services/product.service';
 import { environment } from 'src/environments/environment';

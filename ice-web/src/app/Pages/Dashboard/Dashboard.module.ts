@@ -79,7 +79,11 @@ const ChildRoutes: Routes = [
       {
         path: '',
         loadChildren: './CampaignEvaluation/CampaignList/CampaignList.module#CampaignListModule'
+      },{
+        path: '',
+        loadChildren: './CampaignEvaluation/CampaignAttachment/CampaignAttachment.module#CampaignAttachmentModule'
       },
+      
       {
         path: '',
         loadChildren: './CampaignEvaluation/Component3/Component3.module#Component3Module'
@@ -111,6 +115,11 @@ const ChildRoutes: Routes = [
       {
         path: '',
         loadChildren: './Pages/AddPages/addPages.module#AddPagesModule',
+
+      },
+      {
+        path: '',
+        loadChildren: './Pages/PagesParameters/PagesParameters.module#PagesParametersModule',
 
       },
 

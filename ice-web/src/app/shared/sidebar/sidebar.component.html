@@ -265,6 +265,11 @@
                 <span class="hide-menu">{{LANG.Pages}}</span>
             </a>
         </li>
+        <li class="sidebar-item" *ngIf="checkRoute(navigation_options.PAGES)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/page-parameters">
+            <a class="sidebar-link waves-effect waves-dark">
+                <span class="hide-menu">Pages Parameters</span>
+            </a>
+        </li>
 
         <li *ngIf="checkRoute(navigation_options.OPPORTUNITY_SETUP)"class="sidebar-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/opportunity-setup">
             <a class="sidebar-link waves-effect waves-dark">
