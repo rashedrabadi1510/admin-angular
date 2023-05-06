@@ -58,7 +58,10 @@ export class AddKycComponent implements OnInit {
         {id:13,title:"FundUse"},
         {id:14,title:"MaritalStatus"},
         {id:15,title:"Education"},
-        {id:16,title:"JobStatus"}
+        {id:16,title:"JobStatus"},
+		{id:17,title:"Years"},
+		{id:18,title:"Months"},
+		{id:19,title:"Days"}
     ]
     this.route.queryParams
         .subscribe(
@@ -127,7 +130,7 @@ export class AddKycComponent implements OnInit {
             }else{
                 data.info_type_error=false;
             }
-            if(data.mandatory == "" || data.mandatory == undefined){
+            if(data.mandatory === "" || data.mandatory === undefined){
                 data.mandatory_error=true;
                 this.err=true
             }else{
