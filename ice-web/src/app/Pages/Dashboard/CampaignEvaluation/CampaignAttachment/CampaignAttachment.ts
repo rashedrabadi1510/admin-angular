@@ -15,7 +15,7 @@ declare const $:any;
 })
 export class CampaignAttachment implements OnInit {
   campaignList:any=[];
-  
+  progress:number=0;
   delete_data:any={};
   load:boolean=false;
   dataTable:any;
@@ -23,7 +23,7 @@ export class CampaignAttachment implements OnInit {
   LANG=environment.english_translations;
   user_data:any={};
   id:string="";
-  myFiles:string [] = [];
+  myFiles:any=[];
   
   myForm = new FormGroup({
    name: new FormControl('', [Validators.required, Validators.minLength(3)]),

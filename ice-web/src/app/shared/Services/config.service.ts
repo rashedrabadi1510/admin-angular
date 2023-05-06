@@ -7,7 +7,7 @@ export class configServiceComponent{
 	
 
 	// HOST : string = "http://15.206.96.54/admin/public/api/";
-	HOST : string = "http://localhost/cfc/admin_laravel/admin/public/api/";
+	HOST : string = "http://localhost/admin_laravel/admin/public/api/";
 
 	USERID : string = "	";
 	USERNAME : string = "user@quickfix";

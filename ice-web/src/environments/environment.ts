@@ -5,9 +5,6 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-<<<<<<< Updated upstream
-
-
     apiKey: "AIzaSyB7l5QmXf9pxwW2RZxLHQ2VtLJtL2K8OCY",
     authDomain: "aaaa-6d056.firebaseapp.com",
     databaseURL: "https://aaaa-6d056-default-rtdb.firebaseio.com",
@@ -16,44 +13,16 @@ export const environment = {
     messagingSenderId: "1021417514491",
     appId: "1:1021417514491:web:22abc3ab52fbafe486d75e",
     measurementId: "G-GEMW853ESY"
-    // apiKey: "AIzaSyC_vC_cpFkc0ZiCdey9tEx2TMW0bNQzPjM",
-    // authDomain: "royal-stallion.firebaseapp.com",
-    // databaseURL: "https://royal-stallion.firebaseio.com",
-    // projectId: "royal-stallion",
-    // storageBucket: "royal-stallion.appspot.com",
-    // messagingSenderId: "296126986485",
-    // appId: "1:296126986485:web:ea750bc8e8576b16062dbc",
-    // measurementId: "G-EDH0E6EHS1"
-=======
-    
-   /*   apiKey: "AIzaSyC9W5Wbqb5tcDk1VI6Pi3q6hHcP0OsRA-k",
-      authDomain: "serviceario-b3619.firebaseapp.com",
-      databaseURL: "https://serviceario-b3619-default-rtdb.firebaseio.com",
-      projectId: "serviceario-b3619",
-      storageBucket: "serviceario-b3619.appspot.com",
-      messagingSenderId: "589880033877",
-      appId: "1:589880033877:web:d66709c23733a9aa220adc",
-      measurementId: "G-L72JSN8M1Q" */
-    
-      apiKey: "AIzaSyB7l5QmXf9pxwW2RZxLHQ2VtLJtL2K8OCY",
-      authDomain: "aaaa-6d056.firebaseapp.com",
-      databaseURL: "https://aaaa-6d056-default-rtdb.firebaseio.com",
-      projectId: "aaaa-6d056",
-      storageBucket: "aaaa-6d056.appspot.com",
-      messagingSenderId: "1021417514491",
-      appId: "1:1021417514491:web:22abc3ab52fbafe486d75e",
-      measurementId: "G-GEMW853ESY"
 
 
-
-    // apiKey: "AIzaSyCOhf4y987F-wSd23R7oYtthmezImFYQQE",
-    // authDomain: "cfcsa-3a0a2.firebaseapp.com",
-    // projectId: "cfcsa-3a0a2",
-    // storageBucket: "cfcsa-3a0a2.appspot.com",
-    // messagingSenderId: "162812402019",
-    // appId: "1:162812402019:web:b6588d10842cee85e99b56",
-    // databaseURL: "https://cfcsa-3a0a2-default-rtdb.firebaseio.com",
->>>>>>> Stashed changes
+//     // apiKey: "AIzaSyCOhf4y987F-wSd23R7oYtthmezImFYQQE",
+//     // authDomain: "cfcsa-3a0a2.firebaseapp.com",
+//     // projectId: "cfcsa-3a0a2",
+//     // storageBucket: "cfcsa-3a0a2.appspot.com",
+//     // messagingSenderId: "162812402019",
+//     // appId: "1:162812402019:web:b6588d10842cee85e99b56",
+//     // databaseURL: "https://cfcsa-3a0a2-default-rtdb.firebaseio.com",
+// 
   },
   english_translations:{
     copyright:"2022 © Competitiveness Financial",
