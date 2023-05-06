@@ -14,6 +14,7 @@ declare const $: any;
   styleUrls: ['./CampaignAttachment.css']
 })
 export class CampaignAttachment implements OnInit {
+<<<<<<< HEAD
   campaignList: any = [];
 
   delete_data: any = {};
@@ -26,6 +27,19 @@ export class CampaignAttachment implements OnInit {
   id: string = "";
   myFiles: any = [];
 
+=======
+  campaignList:any=[];
+  progress:number=0;
+  delete_data:any={};
+  load:boolean=false;
+  dataTable:any;
+  title:string="";
+  LANG=environment.english_translations;
+  user_data:any={};
+  id:string="";
+  myFiles:any=[];
+  
+>>>>>>> 20d66cc55ed41f34c0c33b0afaeaea06f3331e99
   myForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     file: new FormControl('', [Validators.required])
