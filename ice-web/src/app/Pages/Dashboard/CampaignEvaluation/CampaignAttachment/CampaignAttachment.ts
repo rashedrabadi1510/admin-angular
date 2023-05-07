@@ -14,20 +14,20 @@ declare const $: any;
   styleUrls: ['./CampaignAttachment.css']
 })
 export class CampaignAttachment implements OnInit {
-<<<<<<< HEAD
-  campaignList: any = [];
+// <<<<<<< HEAD
+//   campaignList: any = [];
 
-  delete_data: any = {};
-  load: boolean = false;
-  dataTable: any;
-  title: string = "";
-  progress:number=0;
-  LANG = environment.english_translations;
-  user_data: any = {};
-  id: string = "";
-  myFiles: any = [];
+//   delete_data: any = {};
+//   load: boolean = false;
+//   dataTable: any;
+//   title: string = "";
+//   progress:number=0;
+//   LANG = environment.english_translations;
+//   user_data: any = {};
+//   id: string = "";
+//   myFiles: any = [];
 
-=======
+// =======
   campaignList:any=[];
   progress:number=0;
   delete_data:any={};
@@ -38,8 +38,7 @@ export class CampaignAttachment implements OnInit {
   user_data:any={};
   id:string="";
   myFiles:any=[];
-  
->>>>>>> 20d66cc55ed41f34c0c33b0afaeaea06f3331e99
+
   myForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     file: new FormControl('', [Validators.required])
@@ -155,7 +154,7 @@ export class CampaignAttachment implements OnInit {
       );
     }
     //alert(this.id);
-    /* for (var i = 0; i < this.myFiles.length; i++) { 
+    /* for (var i = 0; i < this.myFiles.length; i++) {
        formData.append("file[]", this.myFiles[i]);
      }
      formData.append("id",this.id);
