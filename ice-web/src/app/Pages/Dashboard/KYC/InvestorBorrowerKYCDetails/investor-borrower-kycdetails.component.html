@@ -30,7 +30,7 @@
         </div>
 
 
-        <ng-container *ngFor="let data of details?.detail">                
+        <ng-container *ngFor="let data of details?.detail">
             <h2>{{data.title}}</h2>
             <div class="weight pb-0">
                 <ng-container *ngFor="let item of data.info_type;let j=index;">
@@ -58,20 +58,24 @@
                                     <div class="add-image">
                                         <span *ngIf="fields.value && pdfUrl$ ==false">
                                             <!-- <iframe [src]="pdfUrl$" type="application/pdf" width="100%" height="600"></iframe> -->
-                                          <a href="{{fields.value}}">  <img src="{{fields.value}}" alt=""></a>
+                                          <!-- <a href="{{fields.value}}" target="_blank">  <img src="{{fields.value}}" alt="Open File"></a> -->
+                                          <a href="{{fields.value}}" target="_blank">  <img src="../../../../../assets/images/open_file.png" alt="Open File"></a>
                                             <!-- <button class="btn" (click)="downloadPdf()">View</button> -->
                                         </span>
+                                        <!-- C:\CFC-Work\angular\admin\admin-Angular\ice-web\src\assets\images\pdfimg.png
+                                        ice-web\src\assets\images\pdfimg.png -->
                                         <span *ngIf="fields.value && pdfUrl$==true">
                                             <!-- <iframe [src]="pdfUrl$" type="application/pdf" width="100%" height="600"></iframe> -->
-                                          <a href="{{fields.value}}">  <img src="../../../../../assets/images/pdfimg.png" alt=""></a>
+                                          <a href="{{fields.value}}" target="_blank">  <img src="../../../../../assets/images/pdfimg.png" alt="Open file">
+                                          </a>
                                             <!-- <button class="btn" (click)="downloadPdf()">View</button> -->
                                         </span>
-                                        
-                                    </div>                
+
+                                    </div>
                                 </ng-container>
                             </div>
                         </ng-container>
-                        
+
                     </div>
                 </ng-container>
 
@@ -107,14 +111,14 @@
                     <div class="form-group col-md-12">
                         <label>{{LANG.Reason_for_rejection}}</label>
                         <textarea type="text" class="form-control" placeholder="{{LANG.Reason}}"  name="reason" [(ngModel)]="reason"></textarea>
-                    </div>                
+                    </div>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary loader-btn" data-dismiss="modal" [disabled]="load">{{LANG.Close}}</button>
           <button type="button" class="btn btn-primary loader-btn w-50" *ngIf="!load" (click)="approveRejectKYC('2')">{{LANG.Save_changes}}</button>
           <button type="button" *ngIf="load" class="btn btn-primary loader-btn w-50"><loader></loader></button>
-          
+
 
         </div>
       </div>

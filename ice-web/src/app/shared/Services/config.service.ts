@@ -4,9 +4,9 @@ import SHA1 from 'sha1';
 
 @Injectable({providedIn: 'root'})
 export class configServiceComponent{
-	
 
-	//HOST : string = "http://www.atam-mena.com/admin/public/api/";
+
+	// HOST : string = "http://www.atam-mena.com/admin/public/api/";
 	HOST : string = "http://localhost/cfc/admin_laravel/admin/public/api/";
 
 
@@ -18,7 +18,7 @@ export class configServiceComponent{
 
 	 constructor(){}
 
-	
+
 	getHOST(){
 		return this.HOST;
 	}
@@ -28,11 +28,11 @@ export class configServiceComponent{
 		return finalAuth
 	}
 
-	
 
-		
-		   
 
-		
-	
+
+
+
+
+
 }
