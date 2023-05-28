@@ -51,7 +51,7 @@
               </div>
             </div>
             <div class="row p-t-20">
-              
+
 
               <div class="col-md-6">
                 <div class="form-group has-success mb-0">
@@ -180,8 +180,8 @@
                           <option value="1">{{LANG.Yes}}</option>
                           <option value="0">{{LANG.No}}</option>
                         </select>
-                        
-                        
+
+
                       </div>
                       <span class="error" *ngIf="data.mandatory_error">{{LANG.This_field_is_required}}</span>
                     </div>
@@ -222,7 +222,7 @@
                           <option value="1">{{LANG.Active}}</option>
                           <option value="0">{{LANG.Inactive}}</option>
                         </select>
-                        
+
                       </div>
                     </div>
                   </div>
@@ -235,7 +235,7 @@
                             <label class="custom-control-label" for="checkbox0">Check Me Out !</label>
                         </div> -->
             <button *ngIf="!load" type="submit" class="btn btn-primary mt-2" (click)="addProductAttribute()">{{id ? LANG.Update : LANG.Submit}}</button>
-            <button class="btn btn-primary" *ngIf="load">                                
+            <button class="btn btn-primary" *ngIf="load">
                 <loader></loader>
             </button>
           </form>

@@ -103,3 +103,13 @@ button:disabled{
 .add-image img{
     width: 100px;
 }
+/* @media (min-width: 576px) */
+.modal-dialog {
+    max-width: 1000px;
+    margin: 1.75rem auto;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  width: 100%;
+}

@@ -1,28 +1,27 @@
 <div class="business tab-background tab-pad col-md-12 mt-3">
     <!-- <ng-container *ngFor="let result of details"> -->
-
         <h2>{{LANG.Registration_Details}}</h2>
         <div class="weight pb-0">
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>{{LANG.Name}}</label>
                         <input type="text" class="form-control" [(ngModel)]="details.name" disabled>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>{{LANG.Mobile_Number}}</label>
                         <input type="text" class="form-control" [(ngModel)]="details.display_mobile_number" disabled>
                     </div>
-                     <div class="form-group col-md-6">
+                     <div class="form-group col-md-4">
                         <label>Registrattion Type</label>
                         <input type="text" *ngIf="details.type==1" class="form-control"  disabled value="Individual">
                         <input type="text" *ngIf="details.type==2" class="form-control"  disabled value="Coorporate">
 
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>{{LANG.Email}}</label>
                         <input type="text" class="form-control" [(ngModel)]="details.email" disabled>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>{{LANG.Account_Number}}</label>
                         <input type="text" class="form-control" [(ngModel)]="details.account_number" disabled>
                     </div>
@@ -31,16 +30,18 @@
 
 
         <ng-container *ngFor="let data of details?.detail">
-            <h2>{{data.title}}</h2>
+          <div *ngIf="data.id != 9">
+            <h2>{{data.title}} ({{data.id}})</h2>
             <div class="weight pb-0">
                 <ng-container *ngFor="let item of data.info_type;let j=index;">
-                    <p *ngIf="item.detail?.length != ''">{{item.title}}</p>
+                    <p *ngIf="item.detail?.length != ''">{{item.title}} ({{item.id}})</p>
                     <div class="row">
                         <ng-container *ngFor="let fields of item.detail;let k=index;">
-                            <div class="form-group col-md-6">
-                                <label>{{fields.title}}</label>
+                            <div class="form-group col-md-4">
+                                <label>{{fields.title}} ({{fields.id}})</label>
                                 <input *ngIf="fields.type == field_types.Email || fields.type == field_types.Mobile || fields.type == field_types.Characters || fields.type == field_types.Number" type="text" class="form-control" placeholder="{{fields.title}}"  name="field{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled>
-                                <input *ngIf="fields.type == field_types.Date" type="date" class="form-control" placeholder="{{fields.title}}"  name="field{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled>
+                                <input *ngIf="fields.type == field_types.Date && (fields.id != 115 && fields.id != 116)" type="date" class="form-control" placeholder="{{fields.title}}"  name="field{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled>
+                                <input *ngIf="fields.type == field_types.Date && (fields.id == 115 || fields.id == 116) " type="text" class="form-control" placeholder="{{fields.title}}"  name="field{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled>
                                 <textarea *ngIf="fields.type == field_types.Textarea" class="form-control" placeholder="{{LANG.Tell_about_your}} {{fields.title}}" name="textarea{{i}}{{j}}{{k}}" [(ngModel)]="fields.value" disabled></textarea>
                                 <div class="row campaign-row" *ngIf="fields.type == field_types.Yes_No">
                                     <div class="form-check">
@@ -80,8 +81,16 @@
                 </ng-container>
 
             </div>
+          </div>
+          <div *ngIf="data.id == 9">
+            <ng-container>
+              <h2>{{data.title}} ({{data.id}})</h2>
+              <div class="button-wrapper col-md-12 mt-0"><button class="btn success" data-toggle="modal" data-target="#watheqData" [disabled]="load">Watheq Data</button></div>
+             </ng-container>
+          </div>
         </ng-container>
-    <!-- </ng-container> -->
+        <br/><br/>
+        <br/>    <!-- </ng-container> -->
     <div class="col-md-12 " *ngIf="details.detail?.length > 0">
         <div class="row">
             <div class="button-wrapper col-md-4 mt-0">
@@ -123,4 +132,235 @@
         </div>
       </div>
     </div>
+</div>
+<!-- Qaysar start work here for CrEntity Object to display the value of company information from Watheq webservice -->
+<div class="modal fade" id="watheqData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="watheqData">Watheq Company Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="weight pb-0">
+          <div class="row">
+              <div class="form-group col-md-4">
+                <label>crNumber.crName</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.crName" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>crNumber.crNumber</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.crNumber" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>crNumber.crEntityNumber</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.crEntityNumber" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>crNumber.issueDate</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.issueDate" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>crNumber.expiryDate</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.expiryDate" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>crNumber.crMainNumber</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.crMainNumber" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>crMainEntityNumber</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.crMainEntityNumber" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>businessType.id</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.businessType.id" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>businessType.name</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.businessType.name" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>fiscalYear.month</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.fiscalYear.month" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>fiscalYear.day</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.fiscalYear.day" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>fiscalYear.calendarType.id</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.fiscalYear.calendarType.id" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>fiscalYear.calendarType.name</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.fiscalYear.calendarType.name" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>status.id</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.status.id" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>status.name</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.status.name" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>status.nameEn</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.status.nameEn" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>cancellation</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.cancellation" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.website</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.website" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.address</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.address" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>address.general.email</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.email" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.zipcode</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.zipcode" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.fax1</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.fax1" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.telephone1</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.telephone1" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.telephone2</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.telephone2" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.postalBox1</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.postalBox1" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>address.general.postalBox2</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.postalBox2" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>address.national</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.address.national" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>isEcommerce</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.isEcommerce" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>urls</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.urls" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>location.id</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.location.id" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>location.name</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.location.name" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>company.period</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.company.period" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>company.startDate</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.company.startDate" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>company.endDate</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.company.endDate" disabled>
+              </div>
+
+
+              <div class="form-group col-md-4">
+                <label>capital.paidAmount</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.capital.paidAmount" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>capital.subscribedAmount</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.capital.subscribedAmount" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>capital.announcedAmount</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.capital.announcedAmount" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>capital.share.sharePrice</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.capital.share.sharePrice" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label>capital.share.sharesCount</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.capital.share.sharesCount" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>activities.description</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.activities.description" disabled>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>activities.isic.id</label>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.activities.isic[0].id" disabled>
+              </div>
+              <div class="form-group col-md-12">
+                <label>activities.isic.name</label>
+                  <textarea type="text" class="form-control"  name="isicname" [(ngModel)]="crNumber.activities.isic[0].name" disabled></textarea>
+              </div>
+              <div class="form-group col-md-12">
+                <label>activities.isic.nameEn</label>
+                  <textarea type="text" class="form-control"  name="isicnameEn"[(ngModel)]="crNumber.activities.isic[0].nameEn" disabled></textarea>
+              </div>
+              <div class="form-group col-md-12">
+                <label>Parties</label>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">name</th>
+                        <th scope="col">birthDate</th>
+                        <th scope="col">sharesCount</th>
+                        <th scope="col">gross</th>
+                        <th scope="col">identity</th>
+                        <th scope="col">relation</th>
+                        <th scope="col">nationality</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let part of crNumber.parties">
+                        <td>{{part.name}}</td>
+                        <td>{{part.birthDate}}</td>
+                        <td>{{part.sharesCount}}</td>
+                        <td>{{part.gross}}</td>
+                        <td>{{part.identity.id}}</td>
+                        <td>{{part.relation.name}}</td>
+                        <td>{{part.nationality.name}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary loader-btn" data-dismiss="modal" [disabled]="load">{{LANG.Close}}</button>
+      </div>
+    </div>
+  </div>
 </div>

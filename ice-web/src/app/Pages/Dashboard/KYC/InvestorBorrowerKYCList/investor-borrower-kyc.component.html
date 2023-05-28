@@ -40,12 +40,12 @@
                                     <td>{{data.email}}</td>
                                     <td>{{data.account_number ? data.account_number : 'N/A'}}</td>
                                     <td>{{data.kyc_approved_status == '1' ? LANG.Approved : data.kyc_approved_status == '0' ? LANG.Pending : LANG.Rejected}}</td>
-                                    <td> 
+                                    <td>
                                         <span class="del mr-3" (click)="showDeleteModal(data)"><i class="fa fa-trash"></i></span>
                                         <a (click)="edit(data)"><i class="fas fa-edit"></i></a>
                                     </td>
-                                </tr>   
-                               
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>

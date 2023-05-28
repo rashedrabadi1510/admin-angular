@@ -5,9 +5,9 @@
                 <span>{{LANG.KYC}}</span>
             </a>
         </li>
-        <li class="nav-item" (click)="showCampaign()"> 
+        <li class="nav-item" (click)="showCampaign()">
             <a class="nav-link " data-toggle="tab" href="#campaign">
-                <span>{{LANG.Campaign}}</span> 
+                <span>{{LANG.Campaign}}</span>
             </a>
         </li>
         <li class="nav-item" *ngFor="let data of details?.evaluation;let i=index" (click)="changeTab(data)">
@@ -36,22 +36,22 @@
             </a>
         </li>
         <li class="nav-item" (click)="showLoan()" *ngIf="details?.loan?.role_type == user_data?.role_type && details?.loan?.activity != 0">
-            <a class="nav-link " data-toggle="tab" href="#tab-5"> 
+            <a class="nav-link " data-toggle="tab" href="#tab-5">
                 <span>{{LANG.Loan_Management}}</span>
             </a>
         </li>
-        
+
         <!-- <li class="nav-item" (click)="showInvestorStatements()">
             <a class="nav-link " data-toggle="tab" href="#investor_statement">
                 <span>{{LANG.investor_statement}}</span>
             </a>
         </li>
         <li class="nav-item" (click)="showLoan()">
-            <a class="nav-link " data-toggle="tab" href="#tab-5"> 
+            <a class="nav-link " data-toggle="tab" href="#tab-5">
                 <span>{{LANG.Loan_Management}}</span>
             </a>
         </li> -->
-        
+
         <!-- <li class="nav-item">
             <a class="nav-link " data-toggle="tab" href="#tab-5">
                 <span>Business Planning Readiness</span>
@@ -72,8 +72,9 @@
                 <span>Structural Capital Readiness</span>
             </a>
         </li> -->
-        
+
     </ul>
+
     <div class="tab-content col-md-10 ml-0">
         <div class="tab-pane" id="evaluation">
             <div class="tab-background col-md-12" *ngIf="evaluation_details?.rank_type == 1 && graph_data_loaded">
@@ -146,7 +147,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-4 zone1" *ngFor="let data of evaluation_details?.category"></div>
-                                
+
                             </div>
                         </div>
                         <div class="zone-last">
@@ -255,14 +256,14 @@
                             <span>{{LANG.Organizers}}</span>
                         </a>
                     </li>
-                    
+
                 </ul>
                     <div class="tab-content ml-0">
                         <div class="tab-pane show active" id="loan_management">
                             <app-add-loan [product_id]="details?.campaign?.product_id" [opportunity_id]="details?.campaign?.id" [apply_loan_status]="details?.apply_loan_status" [loan_id]="details?.loan?.id" [loan_loading]="loan_loading" (onSubmit)="onSubmit($event)" (apply)="apply($event)"></app-add-loan>
                         </div>
 
-                        
+
                         <div class="tab-pane" id="borrower" *ngIf="loanDetails.borrower_statement.length > 0">
                             <div class="tab-background col-md-12 p-0">
                                 <div class="table-responsive">
@@ -306,9 +307,9 @@
                                                 <td>{{data.fees_due ? data.fees_due : '-'}}</td>
                                                 <td>{{data.total_due ? data.total_due : '-'}}</td>
                                                 <td>{{data.status == '0' ? 'Pending' : 'Paid'}}</td>
-                                                
-                                            </tr>   
-                                        
+
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -327,7 +328,7 @@
                                                 <th>Tax</th>
                                                 <th>{{LANG.Profit_Amount}}</th>
                                                 <th>{{LANG.Total_Amount}}</th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -338,10 +339,10 @@
                                                 <td>{{data.tax}}</td>
                                                 <td>{{data.profit}}</td>
                                                 <td>{{data.total}}</td>
-                                                
-                                                
-                                            </tr>   
-                                        
+
+
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -356,33 +357,33 @@
                                             <tr>
                                                 <th>{{LANG.Investors_Expected_Profit}}</th>
                                                 <th>{{LANG.Organizers_Expected_Profit}}</th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let data of loanDetails.organiser_statement; let i=index;">
                                                 <td>{{data.invester_profit_expected}}</td>
-                                                <td>{{data.organiser_profit_expected}}</td>                                                
-                                                
-                                            </tr>   
-                                        
+                                                <td>{{data.organiser_profit_expected}}</td>
+
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                
+
             </div>
             <div class="business tab-background col-md-12" *ngIf="show_add_loan">
                 <app-add-loan [product_id]="details?.campaign?.product_id" [opportunity_id]="details?.campaign?.id" [apply_loan_status]="details?.apply_loan_status" [loan_id]="details?.loan?.id" [loan_loading]="loan_loading" (onSubmit)="onSubmit($event)" (apply)="apply($event)"></app-add-loan>
             </div>
-            
+
 
         </div>
         <!-- <div class="tab-pane active" id="kyc">
             <div class="business tab-background tab-pad col-md-12">
-                <ng-container *ngFor="let data of details?.kyc">                
+                <ng-container *ngFor="let data of details?.kyc">
                     <h2>{{data.title}}</h2>
                     <div class="weight pb-0">
                         <ng-container *ngFor="let item of data.info_type;let j=index;">
@@ -411,17 +412,17 @@
                                                 <span *ngIf="fields.value">
                                                     <img src="{{fields.value}}" class="">
                                                 </span>
-                                            </div>                
+                                            </div>
                                         </ng-container>
                                     </div>
                                 </ng-container>
-                                
+
                             </div>
                         </ng-container>
 
                     </div>
                 </ng-container>
-                
+
             </div>
         </div> -->
         <div class="tab-pane active" id="campaign">
@@ -431,9 +432,9 @@
                         <ng-container *ngFor="let data of campaign_details;let i=index">
                             <div class="form-group col-md-6" *ngIf="data?.value">
                                 <label class="title-case">{{data.title}}</label>
-                                <input type="text" class="form-control" placeholder="Enter {{data.title}}" [(ngModel)]="data.value" disabled>                               
+                                <input type="text" class="form-control" placeholder="Enter {{data.title}}" [(ngModel)]="data.value" disabled>
                             </div>
-                        </ng-container> 
+                        </ng-container>
                         <div class="col-md-12" *ngIf="details?.campaign?.campaign_images?.length > 0">
                             <label class="title-case">{{LANG.Campaign_Images}}</label>
                             <div class="row">
@@ -441,7 +442,7 @@
                                     <span *ngIf="images.image">
                                         <img src="{{images.image}}" class="">
                                     </span>
-                                </div>  
+                                </div>
                             </div>
 
                         </div>
@@ -451,18 +452,18 @@
                                 <div class="row mb-3">
                                     <div class="col-md-4">
                                         <label class="title-case">{{data.title}}</label>
-                                        <input type="text" class="form-control" placeholder="{{LANG.Enter}} {{data.title}}" [(ngModel)]="data.name" disabled>                               
+                                        <input type="text" class="form-control" placeholder="{{LANG.Enter}} {{data.title}}" [(ngModel)]="data.name" disabled>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="title-case">{{data.title}}</label>
-                                        <input type="text" class="form-control" placeholder="{{LANG.Enter}} {{data.title}}" [(ngModel)]="data.designation" disabled>                               
+                                        <input type="text" class="form-control" placeholder="{{LANG.Enter}} {{data.title}}" [(ngModel)]="data.designation" disabled>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="add-image">
                                             <span *ngIf="data.image">
                                                 <img src="{{data.image}}" class="">
                                             </span>
-                                        </div>                               
+                                        </div>
                                     </div>
 
                                 </div>
@@ -476,74 +477,74 @@
                                     <option *ngFor="let data of productList;" value="{{data.id}}">{{data.title}}</option>
                                 </select>
 
-                                
+
                             </div>
-                            
+
                             <div *ngIf="details?.campaign && details?.campaign?.approved_status == '1' && details?.campaign_product?.role_type == user_data?.role_type && productListDisplay== true &&  details?.campaign_product?.activity == 1 ">
-                                <input type="date" class="form-control form-size" placeholder="Enter close date" [(ngModel)]="close_date"> 
-                                <button class="btn btn-primary"  (click)="changeDate()">change close date    </button>   
+                                <input type="date" class="form-control form-size" placeholder="Enter close date" [(ngModel)]="close_date">
+                                <button class="btn btn-primary"  (click)="changeDate()">change close date    </button>
                             </div>
                             <div *ngIf="details?.campaign && details?.campaign?.approved_status == '1' && details?.campaign_product?.role_type == user_data?.role_type && productListDisplay==true &&  details?.campaign_product?.activity == 1 ">
                                 <div class="form-group col-md-6" >
                                     <label class="title-case">Minimum investment</label>
-                                    <input type="text" class="form-control" placeholder="Enter minimum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="min" [disabled]="details?.campaign_product?.activity == 2" >                               
+                                    <input type="text" class="form-control" placeholder="Enter minimum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="min" [disabled]="details?.campaign_product?.activity == 2" >
                                 </div>
 
                                 <div class="form-group col-md-6" >
                                     <label class="title-case">Maximum Investment</label>
-                                    <input type="text" class="form-control" placeholder="Enter maximum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="max" [disabled]="details?.campaign_product?.activity == 2" >                               
+                                    <input type="text" class="form-control" placeholder="Enter maximum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="max" [disabled]="details?.campaign_product?.activity == 2" >
                                 </div>
-                            
+
                             </div>
 
                             <div *ngIf="details?.campaign_pulisher?.role_type == user_data?.role_type && details?.campaign?.status != 1 && details?.campaign?.approved_status == 1 && details?.campaign?.product_id ">
-                                <input type="date" class="form-control  form-size" placeholder="Enter close date" [(ngModel)]="close_date"> 
-                                <button class="btn btn-primary"  (click)="changeDate()">change close date    </button>   
+                                <input type="date" class="form-control  form-size" placeholder="Enter close date" [(ngModel)]="close_date">
+                                <button class="btn btn-primary"  (click)="changeDate()">change close date    </button>
                             </div>
                             <div *ngIf="details?.campaign_pulisher?.role_type == user_data?.role_type && details?.campaign?.status != 1 && details?.campaign?.approved_status == 1 && details?.campaign?.product_id">
                                 <div class="form-group col-md-6" >
                                     <label class="title-case">Minimum investment</label>
-                                    <input type="text" class="form-control" placeholder="Enter minimum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="min" [disabled]="details?.campaign_product?.activity == 2" >                               
+                                    <input type="text" class="form-control" placeholder="Enter minimum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="min" [disabled]="details?.campaign_product?.activity == 2" >
                                 </div>
 
                                 <div class="form-group col-md-6" >
                                     <label class="title-case">Maximum Investment</label>
-                                    <input type="text" class="form-control" placeholder="Enter maximum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="max" [disabled]="details?.campaign_product?.activity == 2" >                               
+                                    <input type="text" class="form-control" placeholder="Enter maximum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="max" [disabled]="details?.campaign_product?.activity == 2" >
                                 </div>
-                            
+
                             </div>
 
                             <div *ngIf="details?.campaign?.status==1">
-                                <input type="date" class="form-control  form-size" placeholder="Enter close date" [(ngModel)]="close_date"> 
-                                <button  class="btn btn-primary" (click)="changeDate()">change close date    </button>   
+                                <input type="date" class="form-control  form-size" placeholder="Enter close date" [(ngModel)]="close_date">
+                                <button  class="btn btn-primary" (click)="changeDate()">change close date    </button>
                             </div>
                             <div *ngIf="details?.campaign?.status==1">
                                 <div class="form-group col-md-6" >
                                     <label class="title-case">Minimum investment</label>
-                                    <input type="text" class="form-control" placeholder="Enter minimum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="min" [disabled]="details?.campaign_product?.activity == 2" >                               
+                                    <input type="text" class="form-control" placeholder="Enter minimum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="min" [disabled]="details?.campaign_product?.activity == 2" >
                                 </div>
 
                                 <div class="form-group col-md-6" >
                                     <label class="title-case">Maximum Investment</label>
-                                    <input type="text" class="form-control" placeholder="Enter maximum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="max" [disabled]="details?.campaign_product?.activity == 2" >                               
+                                    <input type="text" class="form-control" placeholder="Enter maximum investment" [value]="details?.campaign?.min_investment" [(ngModel)]="max" [disabled]="details?.campaign_product?.activity == 2" >
                                 </div>
-                            
+
                             </div>
-                        
-<!--                             
-                            
+
+<!--
+
                                 <div class="form-group col-md-6 row"   >
                                     <label class="title-case">Select closing date</label>
-                                    
+
                                     <div class="btn-class">
-                                    
-                                </div>                           
+
+                                </div>
                                 </div>
                             </div> -->
                             <div class="row">
                                 <div class="col-md-12 mb-3" *ngIf="details?.campaign?.approved_status == 1 ">
                                     <div class="skip">
-                                        <span class="status">{{LANG.Status}}: 
+                                        <span class="status">{{LANG.Status}}:
                                             <span class="text-success" style="font-weight: 600;">Approved</span>
                                         </span>
                                     </div>
@@ -575,7 +576,7 @@
             <div class="tab-background col-md-12 p-0">
                 <section class="container-fluid sec6">
                     <div>
-                        
+
                         <div class="col-md-12 project mx-auto">
                             <div class="row project-row">
                                 <div class="col-md-3 col-6">
@@ -604,7 +605,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </section>
                 <div class="table-responsive">
@@ -617,7 +618,7 @@
                                 <th>{{LANG.Mobile_Number}}</th>
                                 <th>{{LANG.Email}}</th>
                                 <th>{{LANG.invested_amount}}</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -627,17 +628,17 @@
                                 <td>{{data.mobile_number}}</td>
                                 <td>{{data.email}}</td>
                                 <td>{{data.amount}}</td>
-                                
-                                
-                            </tr>   
-                        
+
+
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        
+
     </div>
 </section>
 
@@ -656,14 +657,14 @@
                     <div class="form-group col-md-12">
                         <label>{{LANG.Reason_for_rejection}}</label>
                         <textarea type="text" class="form-control" placeholder="{{LANG.Reason}}"  name="reason" [(ngModel)]="reason"></textarea>
-                    </div>                
+                    </div>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary loader-btn" data-dismiss="modal" [disabled]="load">{{LANG.Close}}</button>
           <button type="button" class="btn btn-primary loader-btn w-50" *ngIf="!load" (click)="approveRejectKYC('2')">{{LANG.Save_changes}}</button>
           <button type="button" *ngIf="load" class="btn btn-primary loader-btn w-50"><loader></loader></button>
-          
+
 
         </div>
       </div>

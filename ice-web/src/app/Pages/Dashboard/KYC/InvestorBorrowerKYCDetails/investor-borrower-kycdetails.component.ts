@@ -4,8 +4,7 @@ import { KYCService } from 'src/app/shared/Services/kyc.service';
 import { FieldType } from 'src/app/shared/enums';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
-import FileSaver from "file-saver"
+import { CrNumber } from 'src/app/shared/Models/cr-number';
 declare const $:any;
 
 @Component({
@@ -21,10 +20,12 @@ export class InvestorBorrowerKYCDetailsComponent implements OnInit {
   details:any=[];
   field_types=FieldType;
   LANG=environment.english_translations;
+  crNumberStr:any;
+  crNumber:CrNumber;
 
   pdfUrl$: boolean= false;
 
-  constructor(private route:ActivatedRoute,private kycService:KYCService,private toast:ToastrManager) { 
+  constructor(private route:ActivatedRoute,private kycService:KYCService,private toast:ToastrManager) {
     this.route.queryParams
         .subscribe(
           (params: Params) => {
@@ -40,18 +41,20 @@ export class InvestorBorrowerKYCDetailsComponent implements OnInit {
   }
 
   getKYCDetails(){
-    this.kycService.getUserKycDetails(this.id).subscribe((res:any)=>{ 
+    this.kycService.getUserKycDetails(this.id).subscribe((res:any)=>{
         if(res.status){
             this.details=res.response;
             this.details.display_mobile_number=`${this.details.country_code}${this.details.mobile_number}`
+            this.crNumber=JSON.parse(this.details.cr_number_response);
+            // this.crNumber=JSON.parse(JSON.stringify(this.details.cr_number_response));
             this.details.detail.map(data=>{
               data.info_type.map(item=>{
                 item.detail.map(fields=>{
                   if(fields.id==22){
                     console.log(fields.value[84]);
-                    
+
                   }
-                  
+
                 if(fields.value[84]=='f') {
                   // const pdfRef =  fields.value.ref('path/to/pdf.pdf')
                   this.pdfUrl$ = true
@@ -63,10 +66,11 @@ export class InvestorBorrowerKYCDetailsComponent implements OnInit {
             })
         }
     })
+  console.log(`Qaysar CrNumber From String ${JSON.stringify(this.crNumber)}`);
 }
 
 approveRejectKYC(status:string){
- 
+
   let message=this.LANG.KYC_Approved;
   if(status == "2"){
     if(this.reason == "" || this.reason == undefined){
@@ -96,7 +100,7 @@ approveRejectKYC(status:string){
   })
 }
 downloadPdf() {
- 
+
 }
 }
 

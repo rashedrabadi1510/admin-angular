@@ -36,7 +36,7 @@ export class AddKycComponent implements OnInit {
         kyc_name_ar:false,
     };
     LANG=environment.english_translations;
-  
+
 
   constructor(private kycService:KYCService,private toastr:ToastrManager,private route:ActivatedRoute,private location: Location) {
     for(let i=1;i<= 20;i++){
@@ -59,9 +59,10 @@ export class AddKycComponent implements OnInit {
         {id:14,title:"MaritalStatus"},
         {id:15,title:"Education"},
         {id:16,title:"JobStatus"},
-		{id:17,title:"Years"},
-		{id:18,title:"Months"},
-		{id:19,title:"Days"}
+        {id:17,title:"Years"},
+        {id:18,title:"Months"},
+        {id:19,title:"Days"},
+        {id:20,title:"GrossIncome"}
     ]
     this.route.queryParams
         .subscribe(
@@ -99,11 +100,11 @@ export class AddKycComponent implements OnInit {
   errorHandler(){
         if(this.kyc_name == undefined || this.kyc_name == ''){
             this.error.kyc_name=true;
-            this.err=true;	
+            this.err=true;
         }
         if(this.kyc_name_ar == undefined || this.kyc_name_ar == ''){
             this.error.kyc_name_ar=true;
-            this.err=true;	
+            this.err=true;
         }
         this.kyc_details.map(data=>{
             if(data.title == "" || data.title == undefined){
@@ -137,7 +138,7 @@ export class AddKycComponent implements OnInit {
                 data.mandatory_error=false;
             }
         })
-    
+
     }
 
     resetError(){
@@ -169,7 +170,7 @@ export class AddKycComponent implements OnInit {
             return
         }
         this.add(data)
-        
+
     }
 
     getKYCDetails(){

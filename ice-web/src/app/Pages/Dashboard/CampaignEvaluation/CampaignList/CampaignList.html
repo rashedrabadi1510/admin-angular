@@ -35,7 +35,7 @@
                                     <th>Attachment</th>
                                     <th>{{LANG.Status}}</th>
                                     <th>{{LANG.Action}}</th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,12 +47,12 @@
                                     <td>{{data.total_valuation}}</td>
                                     <td><a href="javascript:void(0);" (click)="attachment(data)">Attachment</a></td>
                                     <td>{{data.status == '1' ? LANG.Publish : LANG.Pending}}</td>
-                                    <td> 
+                                    <td>
                                         <span class="del mr-3" (click)="showDeleteModal(data)"><i class="fa fa-trash"></i></span>
                                         <a (click)="edit(data)"><i class="fas fa-edit"></i></a>
                                     </td>
-                                </tr>   
-                               
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
