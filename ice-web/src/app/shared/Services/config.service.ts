@@ -6,8 +6,8 @@ import SHA1 from 'sha1';
 export class configServiceComponent{
 
 
-	// HOST : string = "http://www.atam-mena.com/admin/public/api/";
-	HOST : string = "http://localhost/cfc/admin_laravel/admin/public/api/";
+	HOST : string = "http://www.atam-mena.com/admin/public/api/";
+	// HOST : string = "http://localhost/cfc/admin_laravel/admin/public/api/";
 
 
 	USERID : string = "	";
