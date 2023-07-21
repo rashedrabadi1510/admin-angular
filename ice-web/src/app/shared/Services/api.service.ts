@@ -13,20 +13,20 @@ export class apiServiceComponent{
 	constructor(private http : HttpClient, private config : configServiceComponent){
 		this.url = this.config.getHOST();
 	}
-	
+
 	getHeaders(url:string){
 		this.authHeader = this.config.getAuthHeaders(url);
 		let headers = new HttpHeaders({
 			'Content-Type':'application/json',
 			'Authentication': this.authHeader,
 			'Accept-Language':'en',
-			'crossDomain': 'true',
+			'crossDomain': 'true'
 		});
 		const token=localStorage.getItem("token")
 		if(token){
 			headers = headers.set('Authorization',`Bearer ${token}`);
 		}
-		
+
 		return headers;
 	}
 
@@ -37,7 +37,7 @@ export class apiServiceComponent{
 		.pipe(map((response : Object) => response),
 			catchError(this._errorHandler));
 	}
-	
+
 	post(url:string, data1:any){
 		let headers = this.getHeaders(url);
 		let _url = this.url + url;
@@ -50,12 +50,12 @@ export class apiServiceComponent{
 		let headers = this.getHeaders(url);
 		let _url = this.url + url;
 		let data = data1;
-		
+
 
 		return this.http.post(_url, data1)
 		.pipe(map((response : Object) => response),
 		catchError(this._errorHandler));
-		
+
 
 
 

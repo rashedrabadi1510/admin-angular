@@ -5,9 +5,10 @@ import SHA1 from 'sha1';
 @Injectable({providedIn: 'root'})
 export class configServiceComponent{
 
-
-	HOST : string = "http://www.atam-mena.com/admin/public/api/";
-	// HOST : string = "http://localhost/cfc/admin_laravel/admin/public/api/";
+//
+	// HOST : string = "https://www.atam-mena.com/admin/public/api/";
+	HOST : string = "https://localhost/cfc/admin_laravel/admin/public/api/";
+//   HOST : string = "https://admin.cfc.sa/api/";
 
 
 	USERID : string = "	";

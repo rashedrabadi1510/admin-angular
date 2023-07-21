@@ -9,7 +9,7 @@
             "type": "firefox",
             "request": "launch",
             "reAttach": true,
-            "url": "http://localhost:8888/",
+            "url": "https://localhost:8888/",
             "webRoot": "${workspaceFolder}/",
             "pathMappings": [
                 {

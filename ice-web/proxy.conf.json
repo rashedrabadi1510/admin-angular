@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost/cfc/admin_laravel/admin/public",
+    "target": "https://localhost/cfc/admin_laravel/admin/public",
     "secure": false
   }
 }
