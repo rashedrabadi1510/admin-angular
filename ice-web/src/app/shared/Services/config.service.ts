@@ -7,7 +7,7 @@ export class configServiceComponent{
 
 
 	// HOST : string = "http://www.atam-mena.com/admin/public/api/";
-	HOST : string = "http://localhost/cfc/admin_laravel/admin/public/api/";
+	HOST : string = "https://admin.cfc.sa/api/";
 
 
 	USERID : string = "	";
