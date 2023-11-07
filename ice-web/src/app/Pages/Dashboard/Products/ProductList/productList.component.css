@@ -1,3 +1,6 @@
+td{
+    height: 100px !important;
+}
 .dt-buttons {
     padding-top: 5px;
     margin-bottom: 15px;
@@ -23,5 +26,8 @@
 
 .card-body-1 {
     /* background-color: #7460ee; */
+}
+.table-zoom {
+    zoom: 62%;
 }
 
