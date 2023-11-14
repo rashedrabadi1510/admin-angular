@@ -85,7 +85,7 @@
           <div *ngIf="data.id == 9">
             <ng-container>
               <h2>{{data.title}} ({{data.id}})</h2>
-              <div class="button-wrapper col-md-12 mt-0"><button class="btn success" data-toggle="modal" data-target="#watheqData" [disabled]="load">Watheq Data</button></div>
+              <div *ngIf="details.role_type== 3" class="button-wrapper col-md-12 mt-0"><button class="btn success" data-toggle="modal" data-target="#watheqData" [disabled]="load">Watheq Data</button></div>
              </ng-container>
           </div>
         </ng-container>
@@ -134,7 +134,7 @@
     </div>
 </div>
 <!-- Qaysar start work here for CrEntity Object to display the value of company information from Watheq webservice -->
-<div class="modal fade" id="watheqData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="details.role_type== 3" class="modal fade" id="watheqData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -220,11 +220,10 @@
                 <label>address.general.website</label>
                 <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.website" disabled>
               </div>
-              <div class="form-group col-md-4">
+              <!--old commit <div class="form-group col-md-4">
                 <label>address.general.address</label>
                 <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.address" disabled>
-              </div>
-
+              </div> -->
               <div class="form-group col-md-4">
                 <label>address.general.email</label>
                 <input type="text" class="form-control" [(ngModel)]="crNumber.address.general.email" disabled>
@@ -302,14 +301,14 @@
                 <label>capital.announcedAmount</label>
                 <input type="text" class="form-control" [(ngModel)]="crNumber.capital.announcedAmount" disabled>
               </div>
-              <div class="form-group col-md-4">
+              <!--old comment <div class="form-group col-md-4">
                 <label>capital.share.sharePrice</label>
                 <input type="text" class="form-control" [(ngModel)]="crNumber.capital.share.sharePrice" disabled>
               </div>
               <div class="form-group col-md-4">
                 <label>capital.share.sharesCount</label>
                 <input type="text" class="form-control" [(ngModel)]="crNumber.capital.share.sharesCount" disabled>
-              </div>
+              </div> -->
 
               <div class="form-group col-md-4">
                 <label>activities.description</label>
@@ -318,15 +317,15 @@
 
               <div class="form-group col-md-4">
                 <label>activities.isic.id</label>
-                <input type="text" class="form-control" [(ngModel)]="crNumber.activities.isic[0].id" disabled>
+                <input type="text" class="form-control" [(ngModel)]="crNumber.activities.isic.description" disabled>
               </div>
               <div class="form-group col-md-12">
                 <label>activities.isic.name</label>
-                  <textarea type="text" class="form-control"  name="isicname" [(ngModel)]="crNumber.activities.isic[0].name" disabled></textarea>
+                  <textarea type="text" class="form-control"  name="isicname" [(ngModel)]="crNumber.activities.isic.name" disabled></textarea>
               </div>
               <div class="form-group col-md-12">
                 <label>activities.isic.nameEn</label>
-                  <textarea type="text" class="form-control"  name="isicnameEn"[(ngModel)]="crNumber.activities.isic[0].nameEn" disabled></textarea>
+                  <textarea type="text" class="form-control"  name="isicnameEn"[(ngModel)]="crNumber.activities.isic.nameEn" disabled></textarea>
               </div>
               <div class="form-group col-md-12">
                 <label>Parties</label>
@@ -359,7 +358,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary loader-btn" data-dismiss="modal" [disabled]="load">{{LANG.Close}}</button>
+        <button type="button" class="btn btn-secondary loader-btn" data-dismiss="modal">{{LANG.Close}}</button>
       </div>
     </div>
   </div>

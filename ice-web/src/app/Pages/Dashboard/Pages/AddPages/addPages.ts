@@ -14,7 +14,7 @@ declare const $:any;
   styleUrls: ['./addPages.component.css']
 })
 export class AddPagesComponent implements OnInit {
- 
+
 id:string="";
 progress:number=0;
 title:string="";
@@ -31,12 +31,14 @@ fieldType=[];
 positions:Array<number>=[]
 err:boolean=false;
 load:boolean=false;
+disabled_inputs:boolean=false;
+ckeditorContent:any;
 error={
     title:false,
     ar_title:false,
     description:false,
     ar_description:false,
-}; 
+};
 LANG=environment.english_translations;
 types:string
 selectTupe:any
@@ -46,7 +48,7 @@ constructor(private sanitization:DomSanitizer,private kycService:KYCService,priv
     this.descriptionForm = this.formBuilder.group({
         'title':['',Validators.required],
         'ar_title':['',Validators.required],
-       
+
     })
 for(let i=1;i<= 20;i++){
     this.positions.push(i)
@@ -71,7 +73,7 @@ ngOnInit() {
         height: 200,
     });
     this.getType()
-    
+
 }
 
 
@@ -82,21 +84,21 @@ errorHandler(){
 
     if(this.title == undefined || this.title == ''){
         this.error.title=true;
-        this.err=true;	
+        this.err=true;
     }
     if(this.ar_title == undefined || this.ar_title == ''){
         this.error.ar_title=true;
-        this.err=true;	
+        this.err=true;
     }
 
     if(description == undefined || description == ''){
       this.error.description=true;
-      this.err=true;	
+      this.err=true;
   }
 
   if(ar_description == undefined || ar_description == ''){
     this.error.ar_description=true;
-    this.err=true;	
+    this.err=true;
 }
 
 }
@@ -112,19 +114,19 @@ resetError(){
     }
 }
 changeImage(event:any,type?:number) {
-   
+
     let file = event.target.files[0];
     let ext=file.type.split('/').pop().toLowerCase();
-    
+
     if(this.type != "0"){
       if(ext !== "jpeg" && ext !== "jpg" && ext !== "png" && file.name.split(".").pop().toLowerCase() !== "svg"){
-          this.toastr.warningToastr("",file.name + "is not a valid file") 
+          this.toastr.warningToastr("",file.name + "is not a valid file")
           return false
       }
     }
     if (file) {
         this.image_file=file;
-       
+
         this.uploadImage(this.image_file);
     }
     return
@@ -146,10 +148,10 @@ changeImage(event:any,type?:number) {
         error => console.log(error),
         async () => {
         await uploadTask.snapshot.ref.getDownloadURL().then(res => {
-            this.image=res; 
+            this.image=res;
             this.load=false;
-          
-           
+
+
         });
         }
     );
@@ -157,8 +159,8 @@ changeImage(event:any,type?:number) {
 addProductAttribute(){
     this.resetError();
     this.errorHandler();
-   
-    
+
+
     if(this.err){
         return
     }
@@ -184,7 +186,7 @@ addProductAttribute(){
     }
     this.add(data)
     }
-    
+
 }
 
 getKYCDetails(){
@@ -200,7 +202,7 @@ getKYCDetails(){
             this.image = res.response.image;
             $('#editor').summernote('code', this.description);
             $('#editor1').summernote('code', this.ar_description);
-            
+
         }
     })
 }
@@ -240,10 +242,10 @@ getType(){
 
 selectedType(number:any){
     console.log(number);
-    
+
     this.selectTupe = number
-   
-    
+
+
 }
 
 

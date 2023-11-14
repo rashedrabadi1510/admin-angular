@@ -4,7 +4,7 @@
         <h4 class="text-themecolor">{{LANG.Add_Payment_Info}}</h4>
       </div>
 
-     
+
 
       <!-- <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
@@ -32,7 +32,7 @@
                     (keypress)="onlyNumbers($event)"
 
                   />
-                  <span class="error" *ngIf="error.default">{{LANG.This_field_is_required}}</span>
+                  <span class="error" *ngIf="error?.default">{{LANG.This_field_is_required}}</span>
 
                 </div>
           </div>
@@ -48,7 +48,7 @@
                   (keypress)="onlyNumbers($event)"
 
                 />
-                <span class="error" *ngIf="error.fundraiser_profit">{{LANG.This_field_is_required}}</span>
+                <span class="error" *ngIf="error?.fundraiser_profit">{{LANG.This_field_is_required}}</span>
 
               </div>
         </div>
@@ -64,15 +64,15 @@
                 (keypress)="onlyNumbers($event)"
 
               />
-              <span class="error" *ngIf="error.default">{{LANG.This_field_is_required}}</span>
+              <span class="error" *ngIf="error?.default">{{LANG.This_field_is_required}}</span>
 
-            
 
-              
+
+
             </div>
           </div>
   </div>
-  
+
     <div class="row">
       <div class="col-12">
         <div class="card">
@@ -113,7 +113,7 @@
                         </div>
                         <div class="col-md-6 p-0">
                             <div class="form-group">
-                               
+
                                 <select [disabled]="input_disabled"
                                   class="form-control custom-select"
                                   name="payment_period_id"
@@ -123,19 +123,19 @@
                                   <option *ngFor="let data of payment_period_list;let i = index" value="{{data.id}}">{{data.title}}</option>
                                 </select>
                                 <span class="error" *ngIf="error.payment_period_id">{{LANG.This_field_is_required}}</span>
-              
+
                               </div>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
               </div>
 
             <div class="row border-class form-group kyc-section">
                 <div class="col-md-12">
                     <h4 class="card-title">{{LANG.Installment_Constrains}}</h4>
-    
+
                     <div class="row border-class form-group mb-0 p-2 kyc-section">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -150,10 +150,10 @@
 
                             />
                             <span class="error" *ngIf="error.installments_default">{{LANG.This_field_is_required}}</span>
-          
+
                           </div>
                     </div>
-    
+
                     <!-- <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Min</label>
@@ -167,10 +167,10 @@
 
                             />
                             <span class="error" *ngIf="error.installments_min_value">{{LANG.This_field_is_required}}</span>
-          
+
                           </div>
                     </div>
-    
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Max</label>
@@ -184,25 +184,25 @@
 
                             />
                             <span class="error" *ngIf="error.installments_max_value">{{LANG.This_field_is_required}}</span>
-          
+
                         </div>
                     </div> -->
-    
-                        
+
+
                       </div>
                     </div>
             </div>
-              
 
 
-            
 
-           
+
+
+
 
             <div class="row border-class form-group kyc-section">
                 <div class="col-md-12">
                     <h4 class="card-title">{{LANG.First_Due_date_Offest_Constrains_Days}}</h4>
-    
+
                     <div class="row border-class form-group mb-0 p-2 kyc-section">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -217,10 +217,10 @@
 
                             />
                             <span class="error" *ngIf="error.due_date_default">{{LANG.This_field_is_required}}</span>
-          
+
                           </div>
                     </div>
-    
+
                     <!-- <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Min</label>
@@ -234,10 +234,10 @@
 
                             />
                             <span class="error" *ngIf="error.due_date_min_value">{{LANG.This_field_is_required}}</span>
-          
+
                           </div>
                     </div>
-    
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Max</label>
@@ -251,11 +251,11 @@
 
                             />
                             <span class="error" *ngIf="error.due_date_max_value">{{LANG.This_field_is_required}}</span>
-          
+
                         </div>
                     </div> -->
-    
-                        
+
+
                       </div>
                     </div>
             </div>
@@ -263,7 +263,7 @@
             <div class="row border-class form-group kyc-section">
                 <div class="col-md-12">
                     <h4 class="card-title">{{LANG.Other_Details}}</h4>
-    
+
                     <div class="row border-class form-group mb-0 p-2 kyc-section">
                     <!-- <div class="col-md-6">
                         <div class="form-group">
@@ -279,7 +279,7 @@
                                 <span class="ml-2">{{LANG.Repayments}}</span>
                             </div>
                             <span class="error" *ngIf="error.collect_principle">{{LANG.This_field_is_required}}</span>
-          
+
                           </div>
                     </div> -->
 
@@ -292,11 +292,11 @@
                             [(ngModel)]="grace_period_type"
                           >
                           <option value="0" selected disabled>{{LANG.Select_Grace_Period_Type}}</option>
-    
+
                             <option *ngFor="let data of grace_period_list;let i = index" value="{{data.id}}">{{data.title}}</option>
                           </select>
                             <span class="error" *ngIf="error.grace_period_type">{{LANG.This_field_is_required}}</span>
-    
+
                         </div>
 
                         <div class="form-group has-success" *ngIf="grace_period_type && grace_period_type != 1">
@@ -310,20 +310,20 @@
                                 (keypress)="onlyNumbers($event)"
                             />
                               <span class="error" *ngIf="error.grace_period">{{LANG.This_field_is_required}}</span>
-      
+
                           </div>
                     </div>
-    
-                    
-    
-                        
+
+
+
+
                       </div>
                     </div>
             </div>
 
 
               <!-- <button *ngIf="!load" type="submit" class="btn btn-primary mt-2" (click)="addLoan()">{{id ? 'Update' : 'Submit'}}</button>
-              <button class="btn btn-primary" *ngIf="load">                                
+              <button class="btn btn-primary" *ngIf="load">
                   <loader></loader>
               </button> -->
             </form>
@@ -332,4 +332,3 @@
       </div>
     </div>
   </div>
-  

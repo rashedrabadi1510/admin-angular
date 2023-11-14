@@ -32,18 +32,19 @@ error={
     ar_title:false,
     description:false,
     ar_description:false,
-}; 
+};
 LANG=environment.english_translations;
 types:string
 selectTupe:any
-descriptionForm:FormGroup
+descriptionForm:FormGroup;
+ckeditorContent:any;
 
 
 constructor(private router:Router,private kycService:KYCService,private toastr:ToastrManager,private route:ActivatedRoute,private location: Location,private formBuilder: FormBuilder) {
     this.descriptionForm = this.formBuilder.group({
         'title':['',Validators.required],
         'ar_title':['',Validators.required],
-       
+
     })
 for(let i=1;i<= 20;i++){
     this.positions.push(i)
@@ -54,7 +55,7 @@ this.route.queryParams
       (params: Params) => {
         if(params['id']){
           this.id = params['id'];
-          
+
         }
       }
 )
@@ -62,7 +63,7 @@ this.route.queryParams
 
 ngOnInit() {
     this.getPages()
-    
+
 }
 getPages(type?:number){
 
@@ -76,7 +77,7 @@ const data:any={
         if(type){
           this.dataTable.destroy();
         }
-        setTimeout(() => {   
+        setTimeout(() => {
           this.dataTable=$('#example23').DataTable({
             dom: 'Bfrtip',
             "ordering": false,
@@ -98,21 +99,21 @@ errorHandler(){
 
     if(this.title == undefined || this.title == ''){
         this.error.title=true;
-        this.err=true;	
+        this.err=true;
     }
     if(this.ar_title == undefined || this.ar_title == ''){
         this.error.ar_title=true;
-        this.err=true;	
+        this.err=true;
     }
 
     if(description == undefined || description == ''){
       this.error.description=true;
-      this.err=true;	
+      this.err=true;
   }
 
   if(ar_description == undefined || ar_description == ''){
     this.error.ar_description=true;
-    this.err=true;	
+    this.err=true;
 }
 
 }
@@ -129,26 +130,26 @@ resetError(){
 }
 
 addProductAttribute(){
-   
+
    // this.resetError();
    // this.errorHandler();
-   
-    
-    
- 
+
+
+
+
     const data:any={
         "keyword": this.descriptionForm.controls.title.value,
        "id":this.id,
         "replace_keyword": this.descriptionForm.controls.ar_title.value
-        
+
     }
     this.load=true;
-   
+
     this.add(data)
     if(this.id){
     this.toastr.successToastr(this.LANG.KYC_updated_successfully);
     }
-    
+
 }
 
 getKYCDetails(){
@@ -163,7 +164,7 @@ getKYCDetails(){
             this.type = res.response.title
             $('#editor').summernote('code', this.description);
             $('#editor1').summernote('code', this.ar_description);
-            
+
         }
     })
 }
@@ -192,20 +193,20 @@ edit(data){
     this.title = data.keyword;
     this.ar_title = data.replace_with;
     this.id=data.id;
-    window.scroll({ 
-        top: 0, 
-        left: 0, 
-        behavior: 'smooth' 
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
  });
     //this.router.navigate(["/dashboard/page-parameters"],{queryParams:{id:data.id}})
   }
 
 selectedType(number:any){
     console.log(number);
-    
+
     this.selectTupe = number
-   
-    
+
+
 }
 showDeleteModal(data){
     $("#delete").modal("show");

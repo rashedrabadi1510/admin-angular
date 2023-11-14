@@ -8,7 +8,7 @@ import { InvestorBorrowerKYCDetailsComponent } from './investor-borrower-kycdeta
 
 
 
- 
+
 const ChildRoutes: Routes = [
     {
         path: 'kyc-details',

@@ -1,121 +1,138 @@
 export class CrNumber {
+  public crName: string = "";
+  public crNumber: string = "";
+  public crEntityNumber: string = "";
+  public issueDate: string = "";
+  public expiryDate: string = "";
+  public crMainNumber: string = "";
+  public crMainEntityNumber: string = "";
+  public parties: Partiey[] ;
+  public businessType: BusinessType = new BusinessType();
+  public fiscalYear: FiscalYear = new FiscalYear();
+  public status: Status = new Status();
+  public cancellation: string = "";
+  public address: Address = new Address();
+  public isEcommerce: string = "";
+  public urls: string = "";
+  public location: Location = new Location();
+  public company: Company = new Company();
+  public capital: Capital = new Capital();
+  public activities: Activity = new Activity();
   constructor(
-    public crName: string,
-    public crNumber: string,
-    public crEntityNumber: string,
-    public issueDate: string,
-    public expiryDate: string,
-    public crMainNumber: string,
-    public crMainEntityNumber: string,
-    public parties: Partiey[],
-    public businessType: BusinessType,
-    public fiscalYear: FiscalYear,
-    public status: Status,
-    public cancellation: string,
-    public address: Address,
-    public isEcommerce: string,
-    public urls: string,
-    public location: Location,
-    public company: Company,
-    public capital: Capital,
-    public activities: Activity
   ) {}
 }
 /*******************************************************************************/
 class Isic{
+  public description: string = "";
+  public name: string = "";
+  public nameEn: string = "";
   constructor(
-    public description: string,
-    public name: string,
-    public nameEn: string
   ) {}
 }
 /*******************************************************************************/
 class Activity{
+  public description: string = "";
+  public isic: Isic = new Isic();
   constructor(
-    public description: string,
-    public isic: Isic,
   ) {}
 }
 /*******************************************************************************/
 class Capital {
+  public paidAmount: string = "";
+  public subscribedAmount: string = "";
+  public announcedAmount: string = "";
+  public share: string = "";
   constructor(
-    public paidAmount: string,
-    public subscribedAmount: string,
-    public announcedAmount: string,
-    public share: string
   ) {}
 }
 /*******************************************************************************/
 class Company {
+  public period: string = "";
+  public startDate: string = "";
+  public endDate: string = "";
   constructor(
-    public period: string,
-    public startDate: string,
-    public endDate: string
   ) {}
 }
 /*******************************************************************************/
 class Location {
-  constructor(public id: string, public name: string) {}
+  public id: string = "";
+  public name: string = "";
+  constructor() {}
 }
 /*******************************************************************************/
 class Partiey {
+  public name: string= "";
+  public birthDate: string= "";
+  public sharesCount: string= "";
+  public gross: string= "";
+  public identity: Identity = new Identity();
+  public relation: Relation = new Relation();
+  public nationality: Nationality = new Nationality();
   constructor(
-    public name: string,
-    public birthDate: string,
-    public sharesCount: string,
-    public gross: string,
-    public identity: Identity,
-    public relation: Relation,
-    public nationality: Nationality
   ) {}
 }
 /*******************************************************************************/
 class Nationality {
-  constructor(public id: string, public name: string) {}
+  public id: string= "";
+  public name: string= "";
+  constructor() {}
 }
 /*******************************************************************************/
 class Relation {
-  constructor(public id: string, public name: string) {}
+  public id: string = "";
+  public name: string = "";
+  constructor() {}
 }
 /*******************************************************************************/
 class Identity {
-  constructor(public id: string, public type: string) {}
+  public id: string = "";
+   public type: string = "";
+  constructor() {}
 }
 /*******************************************************************************/
 class BusinessType {
-  constructor(public id: string, public name: string) {}
+  public id: string = "";
+   public name: string= "";
+  constructor() {}
 }
 /*******************************************************************************/
 class FiscalYear {
+  public month: string = "";
+  public day: string = "";
+  public calendarType: CalendarType = new CalendarType();
   constructor(
-    public month: string,
-    public day: string,
-    public calendarType: CalendarType
   ) {}
 }
 /*******************************************************************************/
 class CalendarType {
-  constructor(public id: string, public name: string) {}
+  public id: string= "";
+  public name: string= "";
+  constructor() {}
 }
 /*******************************************************************************/
 class Status {
-  constructor(public id: string, public name: string, public nameEn: string) {}
+public id: string= "";
+public name: string= "";
+public nameEn: string= "";
+  constructor() {}
 }
 /*******************************************************************************/
 class Address {
-  constructor(public general: General, public national: string) {}
+  public general: General = new General();
+   public national: string= "";
+  constructor() {}
 }
 /*******************************************************************************/
 class General {
+  public website: string= "";
+  public national: string= "";
+  public email: string= "";
+  public zipcode: string= "";
+  public fax1: string= "";
+  public telephone1: string= "";
+  public telephone2: string= "";
+  public postalBox1: string= "";
+  public postalBox2: string= "";
   constructor(
-    public website: string,
-    public national: string,
-    public email: string,
-    public zipcode: string,
-    public fax1: string,
-    public telephone1: string,
-    public telephone2: string,
-    public postalBox1: string,
-    public postalBox2: string
   ) {}
 }

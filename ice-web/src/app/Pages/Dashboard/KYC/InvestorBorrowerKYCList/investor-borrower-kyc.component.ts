@@ -19,7 +19,7 @@ export class InvestorBorrowerKYCComponent implements OnInit {
   load:boolean=false;
   dataTable:any;
   type:string="3";
-  LANG=environment.english_translations;  
+  LANG=environment.english_translations;
   constructor(private router:Router,private kycService:KYCService,private toast:ToastrManager) {
     if(this.router.url.split("/")[2] == "inverstors-kyc"){
       this.type="2"
@@ -30,7 +30,7 @@ export class InvestorBorrowerKYCComponent implements OnInit {
       this.getKYCList()
   }
 
-  
+
 
   getKYCList(type?:number){
     this.kycService.getUserKyc(this.type).subscribe((res:any)=>{
@@ -39,7 +39,7 @@ export class InvestorBorrowerKYCComponent implements OnInit {
         if(type){
           this.dataTable.destroy();
         }
-        setTimeout(() => {   
+        setTimeout(() => {
           this.dataTable=$('#example23').DataTable({
             dom: 'Bfrtip',
             "ordering": false,

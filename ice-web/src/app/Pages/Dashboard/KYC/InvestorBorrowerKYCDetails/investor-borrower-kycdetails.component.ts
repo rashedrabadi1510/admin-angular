@@ -21,23 +21,25 @@ export class InvestorBorrowerKYCDetailsComponent implements OnInit {
   field_types=FieldType;
   LANG=environment.english_translations;
   crNumberStr:any;
-  crNumber:CrNumber;
+  crNumber:CrNumber = new CrNumber();
 
   pdfUrl$: boolean= false;
 
-  constructor(private route:ActivatedRoute,private kycService:KYCService,private toast:ToastrManager) {
-    this.route.queryParams
-        .subscribe(
-          (params: Params) => {
-            if(params['id']){
-              this.id = atob(atob(params['id']));
-              this.getKYCDetails();
-            }
-          }
-    )
-  }
+  constructor(private route:ActivatedRoute,
+              private kycService:KYCService,
+              private toast:ToastrManager) { }
 
   ngOnInit() {
+    this.route.queryParams
+    .subscribe(
+      (params: Params) => {
+        if(params['id']){
+          this.id = atob(atob(params['id']));
+          this.getKYCDetails();
+        }
+      }
+)
+this.crNumber = new CrNumber();
   }
 
   getKYCDetails(){
@@ -45,28 +47,27 @@ export class InvestorBorrowerKYCDetailsComponent implements OnInit {
         if(res.status){
             this.details=res.response;
             this.details.display_mobile_number=`${this.details.country_code}${this.details.mobile_number}`
-            this.crNumber=JSON.parse(this.details.cr_number_response);
-            // this.crNumber=JSON.parse(JSON.stringify(this.details.cr_number_response));
+            if(res.response.cr_number_response != null && res.response.cr_number_response != undefined && res.response.cr_number_response != "null"){
+              this.crNumber=JSON.parse(this.details.cr_number_response);
+             }else{
+              this.crNumber= new CrNumber();
+             }
             this.details.detail.map(data=>{
               data.info_type.map(item=>{
                 item.detail.map(fields=>{
-                  if(fields.id==22){
-                    console.log(fields.value[84]);
-
-                  }
-
-                if(fields.value[84]=='f') {
-                  // const pdfRef =  fields.value.ref('path/to/pdf.pdf')
-                  this.pdfUrl$ = true
-                  console.log("pdf");
-
-                  }
+                //   if(fields.id==22){
+                //     console.log(fields.value[84]);
+                //   }
+                // if(fields.value[84]=='f') {
+                //   // const pdfRef =  fields.value.ref('path/to/pdf.pdf')
+                //   this.pdfUrl$ = true
+                //   console.log("pdf");
+                //   }
                 })
               })
             })
         }
     })
-  console.log(`Qaysar CrNumber From String ${JSON.stringify(this.crNumber)}`);
 }
 
 approveRejectKYC(status:string){
