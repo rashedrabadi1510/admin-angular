@@ -6,9 +6,9 @@ import SHA1 from 'sha1';
 export class configServiceComponent{
 
 	 //HOST : string = "https://www.atam-mena.com/admin/public/api/";
-	//  HOST : string = "http://127.0.0.1:8000/api/";
-      HOST : string = "https://admin.cfc.sa/api/";
-  //  HOST : string = "http://localhost/admin_laravel/cfc/admin/public/api/";
+	  HOST : string = "http://127.0.0.1:8000/api/";
+     //HOST : string = "https://admin.cfc.sa/api/";
+ 	 //HOST : string = "http://localhost/admin_laravel/cfc/admin/public/api/";
 
 //C:\xampp\htdocs\cfc\admin_laravel\admin
 
