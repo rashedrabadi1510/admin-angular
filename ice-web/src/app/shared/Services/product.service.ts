@@ -48,7 +48,7 @@ export class ProductService{
 		return this.api.get(this.url, query);
     }
 
-    
+
 
 
 
@@ -95,7 +95,7 @@ export class ProductService{
         let query="";
 		return this.api.get(this.url, query);
     }
-    
+
 
     getIRCalculationList(){
         this.url = "intrest_calculation_list";
@@ -136,7 +136,7 @@ export class ProductService{
         this.url = "applyloan";
 		return this.api.post(this.url, data);
     }
-    
+
     getStatement(data){
         this.url = "get_statements";
 		return this.api.post(this.url, data);
@@ -144,20 +144,21 @@ export class ProductService{
 
     getLoadDetails(id){
         this.url = "loanget_by_id/"+id;
-		return this.api.get(this.url, ""); 
+		return this.api.get(this.url, "");
     }
 
     getInvestorList(data){
         this.url = "get_invester_list";
 		return this.api.post(this.url, data);
     }
-    
 
-    changeDate(data){
-        this.url ="campaign_update_closedate"
-        return this.api.post(this.url,data)
+
+    changeDate(data:any,id:any){
+        // this.url ="campaign_update_closedate"
+        this.url =`campaign_update_closedate/${id}`
+        return this.api.postHeader(this.url,data)
     }
-    
 
-    
+
+
 }

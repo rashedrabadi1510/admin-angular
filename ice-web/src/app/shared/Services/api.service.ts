@@ -46,6 +46,16 @@ export class apiServiceComponent{
 		.pipe(map((response : Object) => response),
 		catchError(this._errorHandler));
 	}
+
+  postHeader(url:string, data1:any){
+		let headers = this.getHeaders(url);
+    headers = headers.set("closeDate",data1.date);
+		let _url = this.url + url;
+		let data = JSON.stringify(data1);
+		return this.http.post(_url, data, { headers: headers, withCredentials :true})
+		.pipe(map((response : Object) => response),
+		catchError(this._errorHandler));
+	}
 	filepost(url:string, data1:any){
 		let headers = this.getHeaders(url);
 		let _url = this.url + url;

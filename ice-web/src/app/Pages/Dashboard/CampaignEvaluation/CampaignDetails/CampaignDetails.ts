@@ -611,10 +611,10 @@ export class CampaignDetails implements OnInit {
 
   changeDate(){
     let data={
-      'id':this.details.campaign.id,
-     'close_date':this.close_date
+      "date":this.close_date
     }
-    this.productService.changeDate(data).subscribe((res:any)=>{
+    this.productService.changeDate(data,this.details.campaign.id).subscribe((res:any)=>{
+      //this.toast.successToastr(res.message)
       this.toast.successToastr("Succesfully Changed")
       this.getCampaignDetails()
     })
