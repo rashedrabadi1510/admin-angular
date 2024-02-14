@@ -18,7 +18,7 @@ export class CampaignList implements OnInit {
   LANG=environment.english_translations;
   user_data:any={};
 
-  constructor(private router:Router,private kycService:KYCService,private toast:ToastrManager) { 
+  constructor(private router:Router,private kycService:KYCService,private toast:ToastrManager) {
     const user_data=btoa(btoa("user_info"));
     if(localStorage.getItem(user_data) != undefined){
       this.user_data=JSON.parse(atob(atob(localStorage.getItem(user_data) || '{}')));
@@ -36,7 +36,7 @@ export class CampaignList implements OnInit {
         if(type){
           this.dataTable.destroy();
         }
-        setTimeout(() => {   
+        setTimeout(() => {
           this.dataTable=$('#example23').DataTable({
             dom: 'Bfrtip',
             "ordering": false,
@@ -53,6 +53,9 @@ export class CampaignList implements OnInit {
 
   edit(data){
     this.router.navigate(["/dashboard/campaign-details"],{queryParams:{id:btoa(btoa(data.id))}})
+  }
+  detailsCampaign(data){
+    this.router.navigate(["/dashboard/campaign_data"],{queryParams:{id:btoa(btoa(data.id))}})
   }
   attachment(data){
     alert(data.tagline);
@@ -83,7 +86,7 @@ export class CampaignList implements OnInit {
     })
   }
 
-  
+
 
 
 

@@ -127,7 +127,10 @@ export class KYCService {
     this.url = "modify_evaluation_campaign";
     return this.api.post(this.url, data);
   }
-
+  updateCampaignData(data) {
+    this.url = "update_campaign_data";
+    return this.api.post(this.url, data);
+  }
   getUserTypeList() {
     this.url = "show_user_type";
     let query = "";

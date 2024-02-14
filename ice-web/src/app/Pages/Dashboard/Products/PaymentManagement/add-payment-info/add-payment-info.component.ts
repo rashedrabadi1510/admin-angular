@@ -27,7 +27,7 @@ export class AddPaymentInfoComponent implements OnInit {
   fees:number
   @Input() input_disabled: boolean=false;
   @Input() loan_id: number;
-  
+
   payment_intervals=[];
   payment_period_list=[{id:1,title:"Day"},{id:2,title:"Week"},{id:3,title:"Month"},{id:4,title:"Year"}];
   grace_period_list=[];
@@ -48,7 +48,9 @@ export class AddPaymentInfoComponent implements OnInit {
     grace_period_type:false,
     investor_tax:false,
     borrower_tax:false,
-    fees:false
+    fees:false,
+    default:false,
+    fundraiser_profit:false
   };
   LANG=environment.english_translations;
 
@@ -57,7 +59,7 @@ export class AddPaymentInfoComponent implements OnInit {
   ngOnInit() {
     this.getGracePeriodList();
     this.getPaymentIntervals();
-   
+
   }
 
   getPaymentIntervals(){
@@ -72,7 +74,7 @@ export class AddPaymentInfoComponent implements OnInit {
     console.log("aa")
   }
 
-  
+
 
   getGracePeriodList(){
     this.productService.getGracePeriodList().subscribe((res:any)=>{
@@ -85,70 +87,70 @@ export class AddPaymentInfoComponent implements OnInit {
   errorHandler(){
     if(this.payment_interval_method == undefined || this.payment_interval_method == null || this.payment_interval_method == 0){
         this.error.payment_interval_method=true;
-        this.err=true;	
+        this.err=true;
     }
-    
+
 
     if(this.payment_interval_method != 2 && this.payment_interval_method != 0){
       if(this.payment_period == undefined || this.payment_period == ''){
         this.error.payment_period=true;
-        this.err=true;	
+        this.err=true;
     }
 
     if(this.payment_period_id == undefined || this.payment_period_id == ''){
       this.error.payment_period_id=true;
-      this.err=true;	
+      this.err=true;
     }
     }
-    
+
     if(this.investor_tax == undefined || this.investor_tax == null){
       this.error.investor_tax=true;
-      this.err=true;	
+      this.err=true;
     }
 
     if(this.borrower_tax == undefined || this.borrower_tax == null){
       this.error.borrower_tax=true;
-      this.err=true;	
+      this.err=true;
     }
 
     if(this.fees == undefined || this.fees == null){
       this.error.fees=true;
-      this.err=true;	
+      this.err=true;
     }
 
     if(this.installments_default == undefined || this.installments_default == ''){
       this.error.installments_default=true;
-      this.err=true;	
+      this.err=true;
     }
 
     // if(this.installments_min_value == undefined || this.installments_min_value == ''){
     //   this.error.installments_min_value=true;
-    //   this.err=true;	
+    //   this.err=true;
     // }
 
     // if(this.installments_max_value == undefined || this.installments_max_value == ''){
     //   this.error.installments_max_value=true;
-    //   this.err=true;	
+    //   this.err=true;
     // }
 
     if(this.due_date_default == undefined || this.due_date_default == ''){
       this.error.due_date_default=true;
-      this.err=true;	
+      this.err=true;
     }
 
     // if(this.due_date_min_value == undefined || this.due_date_min_value == ''){
     //   this.error.due_date_min_value=true;
-    //   this.err=true;	
+    //   this.err=true;
     // }
 
     // if(this.due_date_max_value == undefined || this.due_date_max_value == ''){
     //   this.error.due_date_max_value=true;
-    //   this.err=true;	
+    //   this.err=true;
     // }
 
     // if(this.collect_principle == undefined || this.collect_principle == ''){
     //   this.error.collect_principle=true;
-    //   this.err=true;	
+    //   this.err=true;
     // }
 
     if(this.grace_period_type == null || this.grace_period_type == 0){
@@ -159,14 +161,14 @@ export class AddPaymentInfoComponent implements OnInit {
 
       if(this.grace_period == undefined || this.grace_period == ''){
         this.error.grace_period=true;
-        this.err=true;	
+        this.err=true;
       }
     }
 
 
-    
 
-    
+
+
 
   }
 
@@ -234,7 +236,9 @@ export class AddPaymentInfoComponent implements OnInit {
         grace_period_type:false,
         investor_tax:false,
         borrower_tax:false,
-        fees:false
+        fees:false,
+        default:false,
+        fundraiser_profit:false
       }
   }
 
@@ -243,8 +247,8 @@ export class AddPaymentInfoComponent implements OnInit {
     if ((keycode < 48 || keycode > 57) && keycode !== 13 || keycode == 46) {
       event.preventDefault();
       return false;
-    } 
-    return   
+    }
+    return
 }
 
 

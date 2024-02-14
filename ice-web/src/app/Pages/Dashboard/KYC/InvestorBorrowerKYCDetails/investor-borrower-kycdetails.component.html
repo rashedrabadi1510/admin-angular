@@ -90,33 +90,33 @@
           </div>
         </ng-container>
         <br/><br/>
-        <ng-container id="QualifiedInvestor" *ngIf="details.role_type== 2">
+        <ng-container id="QualifiedInvestor" *ngIf="details.role_type== 2 && qualifiedInvestor.id != 0">
           <div class="row weight pb-0">
             <div class="form-group col-md-8">
               <h2><label>Qualified Investor Data</label></h2>
               <div class="add-image">
                 <span>
-                  <a href="{{qualifiedInvestor.min3WorkYear_url}}" title="ملف يثبت انه سبق لك العمل مدة لا تقل عن ثلاث سنوات في القطاع المالي." target="_blank">
+                  <a href="{{qualifiedInvestor.min3WorkYear_url}}" *ngIf="qualifiedInvestor.min3WorkYear_url != ''" title="ملف يثبت انه سبق لك العمل مدة لا تقل عن ثلاث سنوات في القطاع المالي." target="_blank">
                     <img src="../../../../../assets/images/open_file.png" alt="Open file">
                   </a>
                 </span>
                 <span>
-                  <a href="{{qualifiedInvestor.certificateCME1_url}}" title="شهادتك المعتمدة للتعامل في الاوراق المالية من قبل الهيئة (CME-1)." target="_blank">
+                  <a href="{{qualifiedInvestor.certificateCME1_url}}" *ngIf="qualifiedInvestor.certificateCME1_url != ''" title="شهادتك المعتمدة للتعامل في الاوراق المالية من قبل الهيئة (CME-1)." target="_blank">
                     <img src="../../../../../assets/images/open_file.png" alt="Open file">
                   </a>
                 </span>
                 <span>
-                  <a href="{{qualifiedInvestor.professionalCertificate_url}}" title="شهادتك المهنية المتخصصة في مجال أعمال الاوراق المالية شريطة ان تكون معتمدة من جهة دولية معترف بها." target="_blank">
+                  <a href="{{qualifiedInvestor.professionalCertificate_url}}" *ngIf="qualifiedInvestor.professionalCertificate_url != ''" title="شهادتك المهنية المتخصصة في مجال أعمال الاوراق المالية شريطة ان تكون معتمدة من جهة دولية معترف بها." target="_blank">
                     <img src="../../../../../assets/images/open_file.png" alt="Open file">
                   </a>
                 </span>
                 <span>
-                  <a href="{{qualifiedInvestor.investTenOpport_url}}" title="ثبات انك قمت بعمل صفقات في اسواق الاوراق المالية لا يقل مجموع قيمها عن اربعين مليون ريال سعودي ولا تقل عن عشر صفقات في كل ربع سنة خلال الاثني عشرة شهرا الماضية." target="_blank">
+                  <a href="{{qualifiedInvestor.investTenOpport_url}}" *ngIf="qualifiedInvestor.investTenOpport_url != ''" title="ثبات انك قمت بعمل صفقات في اسواق الاوراق المالية لا يقل مجموع قيمها عن اربعين مليون ريال سعودي ولا تقل عن عشر صفقات في كل ربع سنة خلال الاثني عشرة شهرا الماضية." target="_blank">
                     <img src="../../../../../assets/images/open_file.png" alt="Open file">
                   </a>
                 </span>
                 <span>
-                  <a href="{{qualifiedInvestor.netOrigin_url}}" title="إثبات بقيمة صافي الأصول شريطة ان لا تقل عن خمسة ملايين ريال سعودي." target="_blank">
+                  <a href="{{qualifiedInvestor.netOrigin_url}}" *ngIf="qualifiedInvestor.netOrigin_url != ''" title="إثبات بقيمة صافي الأصول شريطة ان لا تقل عن خمسة ملايين ريال سعودي." target="_blank">
                     <img src="../../../../../assets/images/open_file.png" alt="Open file">
                   </a>
                 </span>

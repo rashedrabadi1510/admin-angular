@@ -71,7 +71,6 @@ export class CampaignDetails implements OnInit {
             }
           }
     )
-
    }
 
   ngOnInit() {
@@ -382,7 +381,6 @@ export class CampaignDetails implements OnInit {
       this.toast.errorToastr(this.LANG.Something_went_wrong_Please_try_again_later);
     })
   }
-
 
   errorHandler(){
     this.err=false;

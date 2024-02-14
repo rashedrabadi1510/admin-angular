@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './Dashboard';
+import { CampaignDataComponent } from './CampaignEvaluation/campaign-data/campaign-data.component';
 
 
 
@@ -26,11 +27,11 @@ const ChildRoutes: Routes = [
           path: '',
           loadChildren: './Products/ProductAttributes/productAttributes.module#ProductAttributesModule'
 
-      },   
+      },
       {
         path: '',
         loadChildren: './Products/AddProductAttributes/AddProductAttributes.module#AddProductAttributesModule'
-      }, 
+      },
       {
         path: '',
         loadChildren: './Products/ProductList/productList.module#ProductListModule'
@@ -79,11 +80,16 @@ const ChildRoutes: Routes = [
       {
         path: '',
         loadChildren: './CampaignEvaluation/CampaignList/CampaignList.module#CampaignListModule'
-      },{
+      },
+      {//\Pages\Dashboard\CampaignEvaluation\campaign-data
+        path: '',
+        loadChildren: './CampaignEvaluation/campaign-data/campaign-data.module#CampaignDataModule'
+      },
+      {
         path: '',
         loadChildren: './CampaignEvaluation/CampaignAttachment/CampaignAttachment.module#CampaignAttachmentModule'
       },
-      
+
       {
         path: '',
         loadChildren: './CampaignEvaluation/Component3/Component3.module#Component3Module'
@@ -181,11 +187,11 @@ const ChildRoutes: Routes = [
         path: '',
         loadChildren: './Home/Sections/AddSection/add-section.module#AddSectionModule',
       },
-      
+
     ],
   },
   ]
- 
+
 @NgModule({
   imports: [
     RouterModule.forChild(ChildRoutes),
@@ -193,6 +199,7 @@ const ChildRoutes: Routes = [
   ],
   declarations:[
       DashboardComponent,
+      //CampaignDataComponent,
   ]
 })
 export class DashboardModule { }

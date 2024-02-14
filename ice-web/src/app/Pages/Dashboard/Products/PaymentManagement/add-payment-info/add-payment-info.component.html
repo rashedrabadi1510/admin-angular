@@ -32,7 +32,7 @@
                     (keypress)="onlyNumbers($event)"
 
                   />
-                  <span class="error" *ngIf="error?.default">{{LANG.This_field_is_required}}</span>
+                  <span class="error" *ngIf="error.default">{{LANG.This_field_is_required}}</span>
 
                 </div>
           </div>
@@ -48,7 +48,7 @@
                   (keypress)="onlyNumbers($event)"
 
                 />
-                <span class="error" *ngIf="error?.fundraiser_profit">{{LANG.This_field_is_required}}</span>
+                <span class="error" *ngIf="error.fundraiser_profit">{{LANG.This_field_is_required}}</span>
 
               </div>
         </div>
@@ -64,7 +64,7 @@
                 (keypress)="onlyNumbers($event)"
 
               />
-              <span class="error" *ngIf="error?.default">{{LANG.This_field_is_required}}</span>
+              <span class="error" *ngIf="error.default">{{LANG.This_field_is_required}}</span>
 
 
 

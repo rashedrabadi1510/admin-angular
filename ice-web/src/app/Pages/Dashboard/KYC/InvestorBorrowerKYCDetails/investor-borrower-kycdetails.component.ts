@@ -22,7 +22,17 @@ export class InvestorBorrowerKYCDetailsComponent implements OnInit {
   LANG = environment.english_translations;
   crNumberStr: any;
   crNumber: CrNumber = new CrNumber();
-  qualifiedInvestor:any;
+  qualifiedInvestor:any={
+    id:0,
+    investor_id: "",
+    min3WorkYear_url:"",
+    certificateCME1_url:"",
+    professionalCertificate_url:"",
+    investTenOpport_url:"",
+    netOrigin_url:"",
+    created_at: "",
+    updated_at: ""
+  };
   pdfUrl$: boolean = false;
 
   constructor(

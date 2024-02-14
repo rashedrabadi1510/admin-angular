@@ -34,6 +34,7 @@
                                     <th>{{LANG.Total_Valuation}}</th>
                                     <th>Attachment</th>
                                     <th>{{LANG.Status}}</th>
+                                    <th>Campaign Detail</th>
                                     <th>{{LANG.Action}}</th>
 
                                 </tr>
@@ -47,6 +48,7 @@
                                     <td>{{data.total_valuation}}</td>
                                     <td><a href="javascript:void(0);" (click)="attachment(data)">Attachment</a></td>
                                     <td>{{data.status == '1' ? LANG.Publish : LANG.Pending}}</td>
+                                    <td><a (click)="detailsCampaign(data)"><i class="fas fa-plus-circle"></i></a></td>
                                     <td>
                                         <span class="del mr-3" (click)="showDeleteModal(data)"><i class="fa fa-trash"></i></span>
                                         <a (click)="edit(data)"><i class="fas fa-edit"></i></a>
