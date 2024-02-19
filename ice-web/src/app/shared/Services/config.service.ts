@@ -10,7 +10,9 @@ export class configServiceComponent{
     HOST : string = "https://admin.cfc.sa/api/";
  	 //HOST : string = "http://localhost/admin_laravel/cfc/admin/public/api/";
 
-//C:\xampp\htdocs\cfc\admin_laravel\admin
+
+	// HOST : string = "http://www.atam-mena.com/admin/public/api/";
+	HOST : string = "https://admin.cfc.sa/api/";
 
 	USERID : string = "	";
 	USERNAME : string = "user@quickfix";
