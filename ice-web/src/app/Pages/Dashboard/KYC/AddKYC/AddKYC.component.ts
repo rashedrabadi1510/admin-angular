@@ -61,7 +61,8 @@ export class AddKycComponent implements OnInit {
         {id:16,title:"JobStatus"},
 		{id:17,title:"Years"},
 		{id:18,title:"Months"},
-		{id:19,title:"Days"}
+		{id:19,title:"Days"},
+        {id:20,title:"Cities"},
     ]
     this.route.queryParams
         .subscribe(
